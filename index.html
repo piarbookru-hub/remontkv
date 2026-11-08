@@ -20,7 +20,7 @@
         
         nav { position: fixed; top: 0; width: 100%; background: #1a1a1a; z-index: 1000; padding: 12px 0; border-bottom: 3px solid #6b8e23; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; position: relative; }
-        .logo { font-size: 24px; font-weight: 700; color: #f5f1e8; }
+        .logo { font-size: 24px; font-weight: 700; color: #f5f1e8; text-decoration: none; display: inline-block; }
         .logo span { color: #6b8e23; }
         .menu-toggle { display: none; background: none; border: none; color: #f5f1e8; font-size: 24px; cursor: pointer; padding: 5px 10px; }
         .nav-links { display: flex; gap: 28px; list-style: none; }
@@ -255,7 +255,7 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">СТРОЙ-МАСТЕР<span>.</span></div>
+            <a href="#home" class="logo">СТРОЙ-МАСТЕР<span>.</span></a>
             <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Меню">
                 <i class="fas fa-bars"></i>
             </button>
@@ -270,7 +270,7 @@
         </div>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="hero-text">
             <h1>Ремонт квартир<span>под ключ</span></h1>
             <p class="tagline">Мы не просто делаем ремонт — мы создаём уют. 15 лет опыта, гарантия на все работы до 3 лет, честные сметы без скрытых платежей.</p>
