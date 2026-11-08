@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ГАРАЖ — Мастерская полного цикла</title>
+    <title>СТРОЙ-МАСТЕР — Ремонт квартир под ключ в Москве</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,6 +15,9 @@
         img { max-width: 100%; height: auto; }
         h1, h2, h3, .logo { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
         
+        /* Исправление: отступ для якорных ссылок, чтобы шапка не перекрывала заголовки */
+        section { scroll-margin-top: 70px; }
+        
         nav { position: fixed; top: 0; width: 100%; background: #1a1a1a; z-index: 1000; padding: 12px 0; border-bottom: 3px solid #6b8e23; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; position: relative; }
         .logo { font-size: 24px; font-weight: 700; color: #f5f1e8; }
@@ -24,7 +27,6 @@
         .nav-links a { color: #f5f1e8; text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; transition: color 0.3s; }
         .nav-links a:hover { color: #6b8e23; }
         
-        /* HERO: не во весь экран, компактно */
         .hero { min-height: auto; padding: 90px 20px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1400px; margin: 0 auto; align-items: center; }
         .hero-text h1 { font-size: clamp(2.2rem, 5.5vw, 64px); line-height: 1.05; margin-bottom: 16px; color: #1a1a1a; }
         .hero-text h1 span { color: #6b8e23; display: block; }
@@ -47,7 +49,6 @@
         .stat-item .number { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 4vw, 40px); font-weight: 700; color: #6b8e23; line-height: 1; }
         .stat-item .label { text-transform: uppercase; font-size: 11px; letter-spacing: 1.5px; margin-top: 6px; color: #ccc; }
         
-        /* СЕКЦИИ: сжаты */
         section.content { padding: 40px 20px; max-width: 1400px; margin: 0 auto; }
         .section-header { margin-bottom: 24px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: end; }
         .section-number { font-family: 'Oswald', sans-serif; font-size: clamp(2.2rem, 5vw, 52px); font-weight: 700; color: #6b8e23; line-height: 1; }
@@ -109,6 +110,8 @@
         .contact-detail i { font-size: 18px; color: #6b8e23; margin-top: 4px; flex-shrink: 0; }
         .contact-detail strong { display: block; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 1px; font-size: 11px; }
         .contact-detail span { color: #ccc; font-size: 14px; }
+        .contact-detail a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+        .contact-detail a:hover { color: #6b8e23; }
         .social-links { margin-top: 22px; display: flex; gap: 10px; flex-wrap: wrap; }
         .social-links a { width: 40px; height: 40px; background: #333; color: #f5f1e8; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.3s; font-size: 16px; }
         .social-links a:hover { background: #6b8e23; }
@@ -117,35 +120,46 @@
         .contact-form-panel h2 { font-size: 26px; margin-bottom: 22px; color: #1a1a1a; }
         .form-group { margin-bottom: 16px; }
         .form-group label { display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; font-size: 11px; color: #666; font-weight: 500; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 11px 0; background: transparent; border: none; border-bottom: 2px solid #1a1a1a; color: #1a1a1a; font-family: inherit; font-size: 16px; transition: border-color 0.3s; }
+        .form-group input, .form-group textarea, .form-group select { 
+            width: 100%; padding: 11px 0; background: transparent; border: none; border-bottom: 2px solid #1a1a1a; 
+            color: #1a1a1a; font-family: inherit; font-size: 16px; transition: border-color 0.3s; 
+        }
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-bottom-color: #6b8e23; }
         .form-group textarea { resize: vertical; min-height: 80px; padding: 11px; border: 2px solid #1a1a1a; }
+        .form-group textarea:focus { border-color: #6b8e23; }
+        
+        /* Яндекс Карта */
+        .map-container {
+            margin-top: 24px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 2px solid #333;
+            height: 250px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            filter: invert(0.9) hue-rotate(180deg) brightness(0.9);
+        }
         
         footer { background: #0f0f0f; color: #888; padding: 24px 20px; text-align: center; font-size: 13px; }
         footer .logo { color: #f5f1e8; margin-bottom: 8px; font-size: 20px; }
         
-        /* ========== ПЛАНШЕТ ========== */
         @media (max-width: 1024px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .hero { gap: 20px; }
             .hero-image img { height: 360px; }
         }
         
-        /* ========== СМАРТФОН ========== */
         @media (max-width: 768px) {
             nav { padding: 10px 0; }
             .logo { font-size: 20px; }
             .menu-toggle { display: block; }
             .nav-links { 
-                display: none; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                right: 0; 
-                background: #1a1a1a; 
-                flex-direction: column; 
-                padding: 14px 20px; 
-                gap: 12px;
+                display: none; position: absolute; top: 100%; left: 0; right: 0; 
+                background: #1a1a1a; flex-direction: column; padding: 14px 20px; gap: 12px;
                 border-bottom: 3px solid #6b8e23;
             }
             .nav-links.active { display: flex; }
@@ -219,12 +233,12 @@
             .form-group label { font-size: 10px; }
             .form-group input, .form-group select { font-size: 15px; }
             .form-group textarea { font-size: 15px; min-height: 70px; }
+            .map-container { height: 200px; }
             
             footer { padding: 18px 16px; }
             footer .logo { font-size: 18px; }
         }
         
-        /* ========== ОЧЕНЬ МАЛЕНЬКИЙ ЭКРАН ========== */
         @media (max-width: 480px) {
             .hero-text h1 { font-size: 32px; }
             .service-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 0; }
@@ -241,7 +255,7 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">ГАРАЖ<span>.</span></div>
+            <div class="logo">СТРОЙ-МАСТЕР<span>.</span></div>
             <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Меню">
                 <i class="fas fa-bars"></i>
             </button>
@@ -258,13 +272,13 @@
 
     <section class="hero">
         <div class="hero-text">
-            <h1>Мастерская<span>полного цикла</span></h1>
-            <p class="tagline">Мы не просто чиним машины — мы возвращаем их к жизни. 15 лет опыта, гарантия на все работы, честные цены без скрытых платежей.</p>
-            <a href="#contact" class="btn-primary">Записаться</a>
+            <h1>Ремонт квартир<span>под ключ</span></h1>
+            <p class="tagline">Мы не просто делаем ремонт — мы создаём уют. 15 лет опыта, гарантия на все работы до 3 лет, честные сметы без скрытых платежей.</p>
+            <a href="#contact" class="btn-primary">Рассчитать стоимость</a>
             <a href="#services" class="btn-outline">Наши услуги</a>
         </div>
         <div class="hero-image">
-            <img src="images/hero.jpg" alt="Мастерская">
+            <img src="images/hero.jpg" alt="Современный ремонт квартиры">
             <div class="hero-badge">
                 <strong>15</strong>
                 лет на рынке
@@ -277,20 +291,20 @@
     <div class="stats-bar">
         <div class="stats-container">
             <div class="stat-item">
-                <div class="number">10000+</div>
-                <div class="label">Довольных клиентов</div>
+                <div class="number">1000+</div>
+                <div class="label">Сданных объектов</div>
             </div>
             <div class="stat-item">
                 <div class="number">25</div>
-                <div class="label">Мастеров в команде</div>
+                <div class="label">Мастеров в штате</div>
             </div>
             <div class="stat-item">
                 <div class="number">98%</div>
-                <div class="label">Возвращаются снова</div>
+                <div class="label">Рекомендуют нас</div>
             </div>
             <div class="stat-item">
-                <div class="number">24/7</div>
-                <div class="label">Эвакуатор</div>
+                <div class="number">3 года</div>
+                <div class="label">Гарантия по договору</div>
             </div>
         </div>
     </div>
@@ -300,57 +314,57 @@
             <div class="section-number">01</div>
             <div class="section-title">
                 <small>Что мы делаем</small>
-                Полный спектр услуг
+                Полный спектр отделочных работ
             </div>
         </div>
         <div class="services-list">
             <div class="service-row">
                 <div class="service-num">01</div>
                 <div class="service-info">
-                    <h3>Компьютерная диагностика</h3>
-                    <p>Проверка всех систем автомобиля профессиональным оборудованием. Точное определение неисправностей.</p>
+                    <h3>Дизайн-проект</h3>
+                    <p>Разработка планировочных решений, 3D-визуализация и подбор материалов под ваш бюджет.</p>
                 </div>
-                <div class="service-price">от 1 500 ₽</div>
+                <div class="service-price">от 1 500 ₽/м²</div>
             </div>
             <div class="service-row">
                 <div class="service-num">02</div>
                 <div class="service-info">
-                    <h3>Техническое обслуживание</h3>
-                    <p>Плановое ТО, замена масла, фильтров, технических жидкостей по регламенту производителя.</p>
+                    <h3>Черновая отделка</h3>
+                    <p>Демонтаж, стяжка пола, штукатурка стен, разводка электрики и сантехники.</p>
                 </div>
-                <div class="service-price">от 2 000 ₽</div>
+                <div class="service-price">от 2 000 ₽/м²</div>
             </div>
             <div class="service-row">
                 <div class="service-num">03</div>
                 <div class="service-info">
-                    <h3>Кузовной ремонт</h3>
-                    <p>Рихтовка, покраска, полировка. Восстановление после ДТП любой сложности.</p>
+                    <h3>Чистовая отделка</h3>
+                    <p>Укладка ламината/плитки, поклейка обоев, монтаж натяжных потолков, установка дверей.</p>
                 </div>
-                <div class="service-price">от 7 000 ₽</div>
+                <div class="service-price">от 7 000 ₽/м²</div>
             </div>
             <div class="service-row">
                 <div class="service-num">04</div>
                 <div class="service-info">
-                    <h3>Ремонт двигателя</h3>
-                    <p>Капитальный и текущий ремонт ДВС. Диагностика, замена деталей, обкатка.</p>
+                    <h3>Ремонт ванной и санузла</h3>
+                    <p>Гидроизоляция, укладка керамогранита, установка сантехники и мебели под ключ.</p>
                 </div>
-                <div class="service-price">от 8 000 ₽</div>
+                <div class="service-price">от 8 000 ₽/м²</div>
             </div>
             <div class="service-row">
                 <div class="service-num">05</div>
                 <div class="service-info">
-                    <h3>Автоэлектрика</h3>
-                    <p>Диагностика проводки, ремонт генераторов, стартеров, установка доп. оборудования.</p>
+                    <h3>Электромонтажные работы</h3>
+                    <p>Штробление, прокладка кабеля, сборка электрощита, установка розеток и светильников.</p>
                 </div>
-                <div class="service-price">от 2 500 ₽</div>
+                <div class="service-price">от 2 500 ₽/точка</div>
             </div>
             <div class="service-row">
                 <div class="service-num">06</div>
                 <div class="service-info">
-                    <h3>Шиномонтаж</h3>
-                    <p>Сезонная замена шин, балансировка, ремонт проколов, хранение резины.</p>
+                    <h3>Укладка напольных покрытий</h3>
+                    <p>Монтаж ламината, паркетной доски, кварцвинила, керамогранита с подготовкой основания.</p>
                 </div>
-                <div class="service-price">от 2 500 ₽</div>
+                <div class="service-price">от 2 500 ₽/м²</div>
             </div>
         </div>
     </section>
@@ -362,20 +376,20 @@
             <div class="section-number">02</div>
             <div class="section-title">
                 <small>Наша история</small>
-                О мастерской
+                О компании
             </div>
         </div>
         <div class="about-grid">
-            <img src="images/about.jpg" alt="Мастерская" class="about-image">
+            <img src="images/about.jpg" alt="Процесс ремонта квартиры" class="about-image">
             <div class="about-text">
-                <h3>С 2010 года делаем то, что любим</h3>
-                <p>ГАРАЖ начинался с небольшого бокса на окраине города. Сегодня это современная мастерская площадью 800 м² с профессиональным оборудованием и командой из 25 специалистов.</p>
-                <p>Мы работаем с любыми марками автомобилей — от отечественных до премиальных. Каждый мастер имеет профильное образование и регулярно проходит повышение квалификации.</p>
+                <h3>С 2010 года создаём уют в ваших домах</h3>
+                <p>СТРОЙ-МАСТЕР начинался с небольшой бригады отделочников. Сегодня это современная компания с собственным штатом из 25 узкопрофильных мастеров и прорабов с опытом от 10 лет.</p>
+                <p>Мы работаем с квартирами любой площади и сложности: от косметического обновления студий до капитального евроремонта премиум-класса в новостройках и вторичном фонде.</p>
                 <div class="features">
-                    <div class="feature"><i class="fas fa-check-circle"></i><span>Гарантия на все работы до 2 лет</span></div>
-                    <div class="feature"><i class="fas fa-check-circle"></i><span>Оригинальные запчасти и аналоги</span></div>
-                    <div class="feature"><i class="fas fa-check-circle"></i><span>Прозрачное ценообразование</span></div>
-                    <div class="feature"><i class="fas fa-check-circle"></i><span>Зона ожидания с Wi-Fi и кофе</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>Официальный договор и гарантия 3 года</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>Закупка и доставка черновых материалов</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>Фиксированная смета без скрытых доплат</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>Профессиональная уборка после ремонта</span></div>
                 </div>
             </div>
         </div>
@@ -386,16 +400,16 @@
             <div class="section-number">03</div>
             <div class="section-title">
                 <small>Наши работы</small>
-                Галерея проектов
+                Галерея реализованных проектов
             </div>
         </div>
         <div class="gallery-grid">
-            <img src="images/work1.jpg" alt="Работа 1">
-            <img src="images/work2.jpg" alt="Работа 2">
-            <img src="images/work3.jpg" alt="Работа 3">
-            <img src="images/work4.jpg" alt="Работа 4">
-            <img src="images/work5.jpg" alt="Работа 5">
-            <img src="images/work6.jpg" alt="Работа 6">
+            <img src="images/work1.jpg" alt="Ремонт гостиной в светлых тонах">
+            <img src="images/work2.jpg" alt="Отделка современной ванной комнаты">
+            <img src="images/work3.jpg" alt="Дизайнерский ремонт кухни-студии">
+            <img src="images/work4.jpg" alt="Укладка инженерной доски в спальне">
+            <img src="images/work5.jpg" alt="Монтаж натяжного потолка и освещения">
+            <img src="images/work6.jpg" alt="Комплексный ремонт квартиры под ключ">
         </div>
     </section>
 
@@ -411,23 +425,23 @@
             <div class="process-grid">
                 <div class="process-step">
                     <div class="process-num">01</div>
-                    <h3>Заявка</h3>
-                    <p>Оставьте заявку на сайте или позвоните нам. Обсудим проблему и согласуем время.</p>
+                    <h3>Заявка и замер</h3>
+                    <p>Оставьте заявку. Бесплатно приедем на объект, сделаем замеры и обсудим детали.</p>
                 </div>
                 <div class="process-step">
                     <div class="process-num">02</div>
-                    <h3>Диагностика</h3>
-                    <p>Проведём полную диагностику, выявим все неисправности, составим смету.</p>
+                    <h3>Смета и договор</h3>
+                    <p>Составим подробную смету с фиксированными ценами. Подпишем официальный договор.</p>
                 </div>
                 <div class="process-step">
                     <div class="process-num">03</div>
-                    <h3>Ремонт</h3>
-                    <p>Согласуем стоимость и сроки. Приступим к работе после вашего подтверждения.</p>
+                    <h3>Выполнение работ</h3>
+                    <p>Завозим материалы. Выполняем ремонт точно в срок с еженедельными фотоотчётами.</p>
                 </div>
                 <div class="process-step">
                     <div class="process-num">04</div>
-                    <h3>Выдача</h3>
-                    <p>Проверим автомобиль вместе с вами. Выдадим все документы и гарантию.</p>
+                    <h3>Сдача объекта</h3>
+                    <p>Принимаете работу, подписываем акт. Выдаём гарантию и акты скрытых работ.</p>
                 </div>
             </div>
         </div>
@@ -438,7 +452,7 @@
             <img src="images/team1.jpg" alt="Иван Петров">
             <div class="team-info">
                 <h3>Иван Петров</h3>
-                <div class="role">Главный механик</div>
+                <div class="role">Главный прораб</div>
                 <div class="exp">Опыт: 20 лет</div>
             </div>
         </div>
@@ -446,7 +460,7 @@
             <img src="images/team2.jpg" alt="Сергей Иванов">
             <div class="team-info">
                 <h3>Сергей Иванов</h3>
-                <div class="role">Диагност</div>
+                <div class="role">Дизайнер интерьеров</div>
                 <div class="exp">Опыт: 15 лет</div>
             </div>
         </div>
@@ -454,7 +468,7 @@
             <img src="images/team3.jpg" alt="Алексей Смирнов">
             <div class="team-info">
                 <h3>Алексей Смирнов</h3>
-                <div class="role">Кузовщик</div>
+                <div class="role">Мастер-отделочник</div>
                 <div class="exp">Опыт: 18 лет</div>
             </div>
         </div>
@@ -469,9 +483,9 @@
     </section>
 
     <section class="cta-section">
-        <h2>Нужна помощь с машиной?</h2>
-        <p>Оставьте заявку прямо сейчас — перезвоним в течение 15 минут и бесплатно проконсультируем по вашей проблеме.</p>
-        <a href="#contact" class="btn-primary">Получить консультацию</a>
+        <h2>Планируете ремонт квартиры?</h2>
+        <p>Оставьте заявку прямо сейчас — перезвоним в течение 15 минут, ответим на вопросы и бесплатно рассчитаем предварительную смету.</p>
+        <a href="#contact" class="btn-primary">Получить расчёт сметы</a>
     </section>
 
     <section class="contact-section" id="contact">
@@ -480,57 +494,69 @@
             <div class="contact-detail">
                 <i class="fas fa-map-marker-alt"></i>
                 <div>
-                    <strong>Адрес</strong>
-                    <span>г. Москва, ул. Автомобильная, 15</span>
+                    <strong>Адрес офиса</strong>
+                    <span>г. Москва, ул. Строителей, 15, офис 204</span>
                 </div>
             </div>
             <div class="contact-detail">
                 <i class="fas fa-phone"></i>
                 <div>
                     <strong>Телефон</strong>
-                    <span><a href="tel:+79991234567" style="color: inherit; text-decoration: none;">+7 (999) 123-45-67</a></span>
+                    <span><a href="tel:+79991234567">+7 (999) 123-45-67</a></span>
                 </div>
             </div>
             <div class="contact-detail">
                 <i class="fas fa-envelope"></i>
                 <div>
                     <strong>Email</strong>
-                    <span>info@garage-service.ru</span>
+                    <span><a href="mailto:info@remont-pro.ru">info@remont-pro.ru</a></span>
                 </div>
             </div>
             <div class="contact-detail">
                 <i class="fas fa-clock"></i>
                 <div>
                     <strong>Режим работы</strong>
-                    <span>Пн-Вс: 9:00 — 21:00</span>
+                    <span>Пн-Сб: 9:00 — 20:00, Вс: выходной</span>
                 </div>
             </div>
+            
+            <!-- Яндекс Карта -->
+            <div class="map-container">
+                <iframe src="https://yandex.ru/map-widget/v1/?ll=37.537573%2C55.703334&z=15&text=ремонт+квартир+москва" allowfullscreen="true" loading="lazy"></iframe>
+            </div>
+
             <div class="social-links">
-                <a href="#"><i class="fab fa-vk"></i></a>
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
+        
         <div class="contact-form-panel">
             <h2>Оставить заявку</h2>
+            <!-- Форма отправки через Formspree. Замени 'xvkkbvpd' на свой ID с formspree.io -->
             <form action="https://formspree.io/f/xvkkbvpd" method="POST">
-                <input type="hidden" name="_subject" value="Новая заявка с сайта ГАРАЖ">
+                <input type="hidden" name="_subject" value="Новая заявка на ремонт с сайта СТРОЙ-МАСТЕР">
                 <div class="form-group">
-                    <label>Ваше имя</label>
-                    <input type="text" name="name" required>
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" name="name" required autocomplete="name" placeholder="Иван Иванов">
                 </div>
                 <div class="form-group">
-                    <label>Телефон</label>
-                    <input type="tel" name="phone" required>
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" required autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__">
                 </div>
                 <div class="form-group">
-                    <label>Марка автомобиля</label>
-                    <input type="text" name="car">
+                    <label for="type">Тип помещения</label>
+                    <select id="type" name="type">
+                        <option value="Новостройка">Квартира в новостройке</option>
+                        <option value="Вторичка">Вторичное жильё</option>
+                        <option value="Комната">Отдельная комната</option>
+                        <option value="Дом/Коттедж">Частный дом / коттедж</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label>Опишите проблему</label>
-                    <textarea name="message" required></textarea>
+                    <label for="message">Комментарий или площадь (м²)</label>
+                    <textarea id="message" name="message" required placeholder="Например: 2-комнатная квартира, 65 м², нужен косметический ремонт"></textarea>
                 </div>
                 <button type="submit" class="btn-primary">Отправить заявку</button>
             </form>
@@ -538,8 +564,8 @@
     </section>
 
     <footer>
-        <div class="logo">ГАРАЖ<span style="color: #6b8e23;">.</span></div>
-        <p>© 2026 Мастерская ГАРАЖ. Все права защищены.</p>
+        <div class="logo">СТРОЙ-МАСТЕР<span style="color: #6b8e23;">.</span></div>
+        <p>© 2026 Ремонт квартир под ключ. Все права защищены.</p>
     </footer>
 
     <script>
