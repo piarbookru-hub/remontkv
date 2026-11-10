@@ -32,23 +32,29 @@
             transform: translateY(30px);
             transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         .services-list .service-row:nth-child(1) { transition-delay: 0.1s; }
         .services-list .service-row:nth-child(2) { transition-delay: 0.15s; }
         .services-list .service-row:nth-child(3) { transition-delay: 0.2s; }
         .services-list .service-row:nth-child(4) { transition-delay: 0.25s; }
         .services-list .service-row:nth-child(5) { transition-delay: 0.3s; }
         .services-list .service-row:nth-child(6) { transition-delay: 0.35s; }
+        
         .gallery-grid .gallery-item:nth-child(1) { transition-delay: 0.1s; }
         .gallery-grid .gallery-item:nth-child(2) { transition-delay: 0.15s; }
         .gallery-grid .gallery-item:nth-child(3) { transition-delay: 0.2s; }
         .gallery-grid .gallery-item:nth-child(4) { transition-delay: 0.25s; }
         .gallery-grid .gallery-item:nth-child(5) { transition-delay: 0.3s; }
         .gallery-grid .gallery-item:nth-child(6) { transition-delay: 0.35s; }
+
         .process-grid .process-step:nth-child(1) { transition-delay: 0.1s; }
         .process-grid .process-step:nth-child(2) { transition-delay: 0.2s; }
         .process-grid .process-step:nth-child(3) { transition-delay: 0.3s; }
         .process-grid .process-step:nth-child(4) { transition-delay: 0.4s; }
+
         .team-strip .team-member:nth-child(1) { transition-delay: 0.1s; }
         .team-strip .team-member:nth-child(2) { transition-delay: 0.2s; }
         .team-strip .team-member:nth-child(3) { transition-delay: 0.3s; }
@@ -63,23 +69,25 @@
         .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; transition: color 0.3s; }
         .nav-links a:hover { color: var(--accent); }
         
+        /* ИСПРАВЛЕНИЕ: сдвигаем блок hero вниз на высоту шапки (60px) */
         .hero {
             position: relative;
             min-height: 600px;
-            padding: 120px 20px 60px;
+            margin-top: 60px; /* ← Блок начинается ровно от нижней границы шапки */
+            padding: 60px 20px 60px; /* ← Уменьшили padding-top с 120px до 60px */
             display: flex;
             align-items: center;
             overflow: hidden;
         }
-        /* ИСПРАВЛЕНО: фото строго в границах блока hero, прижато к правому краю, верху и низу */
+        /* Фото строго в границах блока, прижато к правому краю, верху и низу */
         .hero::before {
             content: '';
             position: absolute;
-            inset: 0; /* Блок = границам hero, никуда не вылезает */
+            inset: 0;
             background-color: var(--bg-dark);
             background-image: url('images/hero.jpg');
-            background-position: right top; /* Прижато к правому краю и верху */
-            background-size: auto 100%; /* Высота = 100% блока, ширина пропорциональна */
+            background-position: right top; /* Прижато к правому краю и верху блока */
+            background-size: auto 100%; /* Высота = 100% блока, ширина пропорциональна (панорама уходит влево) */
             background-repeat: no-repeat;
             z-index: -2;
         }
@@ -91,34 +99,88 @@
             z-index: -1;
         }
         
-        .hero-text { position: relative; z-index: 3; max-width: 650px; }
-        .hero-text h1 { font-size: clamp(2.5rem, 6vw, 72px); line-height: 1.05; margin-bottom: 20px; color: var(--text-light); }
-        .hero-text h1 span { color: var(--accent); display: block; }
-        .hero-text .tagline { font-size: 16px; margin-bottom: 28px; color: #ccc; max-width: 500px; }
+        .hero-text {
+            position: relative;
+            z-index: 3;
+            max-width: 650px;
+        }
+        .hero-text h1 { 
+            font-size: clamp(2.5rem, 6vw, 72px); 
+            line-height: 1.05; 
+            margin-bottom: 20px; 
+            color: var(--text-light); 
+        }
+        .hero-text h1 span { 
+            color: var(--accent); 
+            display: block; 
+        }
+        .hero-text .tagline { 
+            font-size: 16px; 
+            margin-bottom: 28px; 
+            color: #ccc; 
+            max-width: 500px; 
+        }
         
         .btn-primary { 
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-            padding: 14px 30px; background: var(--accent); color: var(--text-light);
-            text-decoration: none; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 1.5px; font-size: 13px; transition: all 0.3s;
-            border: 2px solid var(--accent); cursor: pointer; font-family: inherit; 
+            padding: 14px 30px; 
+            background: var(--accent); 
+            color: var(--text-light); 
+            text-decoration: none; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            font-size: 13px; 
+            transition: all 0.3s; 
+            border: 2px solid var(--accent); 
+            cursor: pointer; 
+            font-family: inherit; 
         }
-        .btn-primary:hover { background: transparent; color: var(--accent); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(196, 154, 108, 0.3); }
+        .btn-primary:hover { 
+            background: transparent; 
+            color: var(--accent); 
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 15px rgba(196, 154, 108, 0.3); 
+        }
         .btn-outline-light { 
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-            padding: 14px 30px; background: transparent; color: var(--text-light);
-            text-decoration: none; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 1.5px; font-size: 13px; border: 2px solid var(--text-light);
-            margin-left: 12px; transition: all 0.3s; 
+            padding: 14px 30px; 
+            background: transparent; 
+            color: var(--text-light); 
+            text-decoration: none; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            font-size: 13px; 
+            border: 2px solid var(--text-light); 
+            margin-left: 12px; 
+            transition: all 0.3s; 
         }
-        .btn-outline-light:hover { background: var(--text-light); color: var(--bg-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
+        .btn-outline-light:hover { 
+            background: var(--text-light); 
+            color: var(--bg-dark); 
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 15px rgba(255,255,255,0.2); 
+        }
         
         .hero-badge { 
-            position: absolute; bottom: 50px; right: 60px; background: var(--accent); color: var(--text-light);
-            padding: 20px 26px; font-family: 'Oswald', sans-serif; font-size: 18px;
-            text-align: center; line-height: 1.2; box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 2;
+            position: absolute; 
+            bottom: 50px; 
+            right: 60px; 
+            background: var(--accent); 
+            color: var(--text-light); 
+            padding: 20px 26px; 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 18px; 
+            text-align: center; 
+            line-height: 1.2; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4); 
+            z-index: 2;
         }
-        .hero-badge strong { display: block; font-size: 42px; }
+        .hero-badge strong { 
+            display: block; 
+            font-size: 42px; 
+        }
         
         .divider { height: 3px; background: var(--bg-dark); margin: 0; }
         
@@ -219,29 +281,66 @@
         .form-group textarea { resize: vertical; min-height: 80px; padding: 11px; border: 2px solid var(--bg-dark); border-radius: 4px; }
         .form-group textarea:focus { border-color: var(--accent); }
         
-        .map-container { margin-top: 24px; border-radius: 4px; overflow: hidden; border: 2px solid #333; height: 250px; transition: all 0.3s; }
+        .map-container {
+            margin-top: 24px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 2px solid #333;
+            height: 250px;
+            transition: all 0.3s;
+        }
         .map-container:hover { border-color: var(--accent); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .map-container iframe { width: 100%; height: 100%; border: 0; display: block; filter: invert(0.9) hue-rotate(180deg) brightness(0.9); }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            filter: invert(0.9) hue-rotate(180deg) brightness(0.9);
+        }
         
         footer { background: #0f0f0f; color: #888; padding: 24px 20px; text-align: center; font-size: 13px; }
         footer .logo { color: var(--text-light); margin-bottom: 8px; font-size: 20px; }
 
         .mobile-sticky-bar {
-            display: none; position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(26, 26, 26, 0.98); backdrop-filter: blur(10px);
-            border-top: 2px solid var(--accent); padding: 12px 16px;
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid var(--accent);
+            padding: 12px 16px;
             padding-bottom: max(12px, env(safe-area-inset-bottom));
-            z-index: 9999; gap: 12px; box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
+            z-index: 9999;
+            gap: 12px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
         }
-        .mobile-sticky-bar .btn { flex: 1; padding: 14px 10px; font-size: 14px; text-align: center; justify-content: center; }
-        .mobile-sticky-bar .btn-outline-light { border-color: var(--accent); color: var(--accent); margin-left: 0; }
-        .mobile-sticky-bar .btn-outline-light:hover { background: var(--accent); color: var(--bg-dark); }
+        .mobile-sticky-bar .btn {
+            flex: 1;
+            padding: 14px 10px;
+            font-size: 14px;
+            text-align: center;
+            justify-content: center;
+        }
+        .mobile-sticky-bar .btn-outline-light {
+            border-color: var(--accent);
+            color: var(--accent);
+            margin-left: 0;
+        }
+        .mobile-sticky-bar .btn-outline-light:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+        }
         
-        @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 1024px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         
         @media (max-width: 768px) {
             .mobile-sticky-bar { display: flex; }
             body { padding-bottom: 75px; }
+
             nav { padding: 10px 0; }
             .logo { font-size: 20px; }
             .menu-toggle { display: block; }
@@ -253,55 +352,78 @@
             .nav-links.active { display: flex; }
             .nav-links a { font-size: 14px; padding: 4px 0; }
             
-            .hero { min-height: 500px; padding: 100px 16px 60px; text-align: left; }
+            /* Мобильный hero: тоже сдвигаем под шапку */
+            .hero { 
+                margin-top: 50px; /* Шапка на мобильном чуть ниже */
+                min-height: 500px; 
+                padding: 50px 16px 60px; 
+                text-align: left; 
+            }
             /* На мобильном cover, чтобы заполнить узкий экран */
             .hero::before { 
                 background-position: center center; 
                 background-size: cover; 
             }
-            .hero::after { background: linear-gradient(180deg, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.75) 100%); }
+            .hero::after {
+                background: linear-gradient(180deg, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.75) 100%);
+            }
             .hero-text h1 { font-size: 36px; margin-bottom: 16px; }
             .hero-text .tagline { font-size: 14px; margin-bottom: 20px; }
             .btn-primary, .btn-outline-light { padding: 12px 22px; font-size: 12px; letter-spacing: 1px; width: 100%; text-align: center; }
             .btn-outline-light { margin-left: 0; margin-top: 12px; }
-            .hero-badge { bottom: 20px; right: 16px; padding: 14px 18px; font-size: 14px; }
+            
+            .hero-badge { 
+                bottom: 20px; 
+                right: 16px; 
+                padding: 14px 18px; 
+                font-size: 14px; 
+            }
             .hero-badge strong { font-size: 28px; }
+            
             .stats-bar { padding: 20px 16px; }
             .stats-container { grid-template-columns: repeat(2, 1fr); gap: 14px; }
             .stat-item .label { font-size: 10px; }
+            
             section.content { padding: 24px 16px; }
             .section-header { gap: 14px; margin-bottom: 16px; grid-template-columns: auto 1fr; }
             .section-number { font-size: 38px; }
             .section-title small { font-size: 10px; letter-spacing: 1.5px; margin-bottom: 4px; }
+            
             .service-row { grid-template-columns: 40px 1fr; gap: 10px; padding: 14px 0; }
             .service-num { font-size: 18px; }
             .service-info h3 { font-size: 16px; }
             .service-info p { font-size: 12px; }
             .service-price { grid-column: 2; font-size: 14px; margin-top: -4px; color: var(--accent); font-weight: 600; }
+            
             .about-grid { grid-template-columns: 1fr; gap: 20px; }
             .about-image { height: 260px; }
             .about-text h3 { font-size: 20px; margin-bottom: 10px; }
             .about-text p { font-size: 13px; margin-bottom: 8px; }
             .feature span { font-size: 12.5px; }
             .feature i { font-size: 15px; }
+            
             .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
             .gallery-item img { height: 150px; border-width: 0; }
             .gallery-item { border-width: 3px; }
+            
             .process { padding: 28px 16px; }
             .process-grid { grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
             .process-step::after { display: none; }
             .process-num { font-size: 32px; margin-bottom: 4px; }
             .process-step h3 { font-size: 15px; margin-bottom: 4px; }
             .process-step p { font-size: 12px; }
+            
             .team-strip { grid-template-columns: repeat(2, 1fr); }
             .team-member img { height: 180px; }
             .team-info { padding: 12px; }
             .team-info h3 { font-size: 15px; }
             .team-info .role { font-size: 10px; }
             .team-info .exp { font-size: 11px; }
+            
             .cta-section { padding: 26px 16px; }
             .cta-section h2 { font-size: 22px; margin-bottom: 8px; }
             .cta-section p { font-size: 13px; margin-bottom: 14px; }
+            
             .contact-section { grid-template-columns: 1fr; }
             .contact-info-panel { padding: 24px 18px; }
             .contact-info-panel h2 { font-size: 22px; margin-bottom: 16px; }
@@ -311,6 +433,7 @@
             .contact-detail span { font-size: 13px; }
             .social-links { margin-top: 16px; }
             .social-links a { width: 36px; height: 36px; font-size: 14px; }
+            
             .contact-form-panel { padding: 24px 18px; }
             .contact-form-panel h2 { font-size: 22px; margin-bottom: 16px; }
             .form-group { margin-bottom: 14px; }
@@ -318,6 +441,7 @@
             .form-group input, .form-group select { font-size: 15px; }
             .form-group textarea { font-size: 15px; min-height: 70px; }
             .map-container { height: 200px; }
+            
             footer { padding: 18px 16px; }
             footer .logo { font-size: 18px; }
         }
@@ -369,47 +493,80 @@
 
     <div class="stats-bar">
         <div class="stats-container">
-            <div class="stat-item animate-on-scroll"><div class="number">1000+</div><div class="label">Сданных объектов</div></div>
-            <div class="stat-item animate-on-scroll"><div class="number">25</div><div class="label">Мастеров в штате</div></div>
-            <div class="stat-item animate-on-scroll"><div class="number">98%</div><div class="label">Рекомендуют нас</div></div>
-            <div class="stat-item animate-on-scroll"><div class="number">3 года</div><div class="label">Гарантия по договору</div></div>
+            <div class="stat-item animate-on-scroll">
+                <div class="number">1000+</div>
+                <div class="label">Сданных объектов</div>
+            </div>
+            <div class="stat-item animate-on-scroll">
+                <div class="number">25</div>
+                <div class="label">Мастеров в штате</div>
+            </div>
+            <div class="stat-item animate-on-scroll">
+                <div class="number">98%</div>
+                <div class="label">Рекомендуют нас</div>
+            </div>
+            <div class="stat-item animate-on-scroll">
+                <div class="number">3 года</div>
+                <div class="label">Гарантия по договору</div>
+            </div>
         </div>
     </div>
 
     <section class="content" id="services">
         <div class="section-header animate-on-scroll">
             <div class="section-number">01</div>
-            <div class="section-title"><small>Что мы делаем</small>Полный спектр отделочных работ</div>
+            <div class="section-title">
+                <small>Что мы делаем</small>
+                Полный спектр отделочных работ
+            </div>
         </div>
         <div class="services-list">
             <div class="service-row animate-on-scroll">
                 <div class="service-num">01</div>
-                <div class="service-info"><h3>Дизайн-проект</h3><p>Разработка планировочных решений, 3D-визуализация и подбор материалов под ваш бюджет.</p></div>
+                <div class="service-info">
+                    <h3>Дизайн-проект</h3>
+                    <p>Разработка планировочных решений, 3D-визуализация и подбор материалов под ваш бюджет.</p>
+                </div>
                 <div class="service-price">от 1 500 ₽/м²</div>
             </div>
             <div class="service-row animate-on-scroll">
                 <div class="service-num">02</div>
-                <div class="service-info"><h3>Черновая отделка</h3><p>Демонтаж, стяжка пола, штукатурка стен, разводка электрики и сантехники.</p></div>
+                <div class="service-info">
+                    <h3>Черновая отделка</h3>
+                    <p>Демонтаж, стяжка пола, штукатурка стен, разводка электрики и сантехники.</p>
+                </div>
                 <div class="service-price">от 2 000 ₽/м²</div>
             </div>
             <div class="service-row animate-on-scroll">
                 <div class="service-num">03</div>
-                <div class="service-info"><h3>Чистовая отделка</h3><p>Укладка ламината/плитки, поклейка обоев, монтаж натяжных потолков, установка дверей.</p></div>
+                <div class="service-info">
+                    <h3>Чистовая отделка</h3>
+                    <p>Укладка ламината/плитки, поклейка обоев, монтаж натяжных потолков, установка дверей.</p>
+                </div>
                 <div class="service-price">от 7 000 ₽/м²</div>
             </div>
             <div class="service-row animate-on-scroll">
                 <div class="service-num">04</div>
-                <div class="service-info"><h3>Ремонт ванной и санузла</h3><p>Гидроизоляция, укладка керамогранита, установка сантехники и мебели под ключ.</p></div>
+                <div class="service-info">
+                    <h3>Ремонт ванной и санузла</h3>
+                    <p>Гидроизоляция, укладка керамогранита, установка сантехники и мебели под ключ.</p>
+                </div>
                 <div class="service-price">от 8 000 ₽/м²</div>
             </div>
             <div class="service-row animate-on-scroll">
                 <div class="service-num">05</div>
-                <div class="service-info"><h3>Электромонтажные работы</h3><p>Штробление, прокладка кабеля, сборка электрощита, установка розеток и светильников.</p></div>
+                <div class="service-info">
+                    <h3>Электромонтажные работы</h3>
+                    <p>Штробление, прокладка кабеля, сборка электрощита, установка розеток и светильников.</p>
+                </div>
                 <div class="service-price">от 2 500 ₽/точка</div>
             </div>
             <div class="service-row animate-on-scroll">
                 <div class="service-num">06</div>
-                <div class="service-info"><h3>Укладка напольных покрытий</h3><p>Монтаж ламината, паркетной доски, кварцвинила, керамогранита с подготовкой основания.</p></div>
+                <div class="service-info">
+                    <h3>Укладка напольных покрытий</h3>
+                    <p>Монтаж ламината, паркетной доски, кварцвинила, керамогранита с подготовкой основания.</p>
+                </div>
                 <div class="service-price">от 2 500 ₽/м²</div>
             </div>
         </div>
@@ -420,7 +577,10 @@
     <section class="content" id="about">
         <div class="section-header animate-on-scroll">
             <div class="section-number">02</div>
-            <div class="section-title"><small>Наша история</small>О компании</div>
+            <div class="section-title">
+                <small>Наша история</small>
+                О компании
+            </div>
         </div>
         <div class="about-grid">
             <img src="images/about.jpg" alt="Процесс ремонта квартиры" class="about-image animate-on-scroll">
@@ -441,15 +601,30 @@
     <section class="content" id="gallery">
         <div class="section-header animate-on-scroll">
             <div class="section-number">03</div>
-            <div class="section-title"><small>Наши работы</small>Галерея реализованных проектов</div>
+            <div class="section-title">
+                <small>Наши работы</small>
+                Галерея реализованных проектов
+            </div>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item animate-on-scroll"><img src="images/work1.jpg" alt="Ремонт гостиной"></div>
-            <div class="gallery-item animate-on-scroll"><img src="images/work2.jpg" alt="Отделка ванной"></div>
-            <div class="gallery-item animate-on-scroll"><img src="images/work3.jpg" alt="Ремонт кухни-студии"></div>
-            <div class="gallery-item animate-on-scroll"><img src="images/work4.jpg" alt="Укладка доски в спальне"></div>
-            <div class="gallery-item animate-on-scroll"><img src="images/work5.jpg" alt="Монтаж потолка и освещения"></div>
-            <div class="gallery-item animate-on-scroll"><img src="images/work6.jpg" alt="Ремонт квартиры под ключ"></div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="images/work1.jpg" alt="Ремонт гостиной в светлых тонах">
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="images/work2.jpg" alt="Отделка современной ванной комнаты">
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="images/work3.jpg" alt="Дизайнерский ремонт кухни-студии">
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="images/work4.jpg" alt="Укладка инженерной доски в спальне">
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="images/work5.jpg" alt="Монтаж натяжного потолка и освещения">
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="images/work6.jpg" alt="Комплексный ремонт квартиры под ключ">
+            </div>
         </div>
     </section>
 
@@ -457,13 +632,32 @@
         <div class="process-container">
             <div class="section-header animate-on-scroll" style="color: var(--text-light);">
                 <div class="section-number">04</div>
-                <div class="section-title" style="color: var(--text-light);"><small style="color: var(--accent);">Как мы работаем</small>Процесс в 4 шага</div>
+                <div class="section-title" style="color: var(--text-light);">
+                    <small style="color: var(--accent);">Как мы работаем</small>
+                    Процесс в 4 шага
+                </div>
             </div>
             <div class="process-grid">
-                <div class="process-step animate-on-scroll"><div class="process-num">01</div><h3>Заявка и замер</h3><p>Оставьте заявку. Бесплатно приедем на объект, сделаем замеры и обсудим детали.</p></div>
-                <div class="process-step animate-on-scroll"><div class="process-num">02</div><h3>Смета и договор</h3><p>Составим подробную смету с фиксированными ценами. Подпишем официальный договор.</p></div>
-                <div class="process-step animate-on-scroll"><div class="process-num">03</div><h3>Выполнение работ</h3><p>Завозим материалы. Выполняем ремонт точно в срок с еженедельными фотоотчётами.</p></div>
-                <div class="process-step animate-on-scroll"><div class="process-num">04</div><h3>Сдача объекта</h3><p>Принимаете работу, подписываем акт. Выдаём гарантию и акты скрытых работ.</p></div>
+                <div class="process-step animate-on-scroll">
+                    <div class="process-num">01</div>
+                    <h3>Заявка и замер</h3>
+                    <p>Оставьте заявку. Бесплатно приедем на объект, сделаем замеры и обсудим детали.</p>
+                </div>
+                <div class="process-step animate-on-scroll">
+                    <div class="process-num">02</div>
+                    <h3>Смета и договор</h3>
+                    <p>Составим подробную смету с фиксированными ценами. Подпишем официальный договор.</p>
+                </div>
+                <div class="process-step animate-on-scroll">
+                    <div class="process-num">03</div>
+                    <h3>Выполнение работ</h3>
+                    <p>Завозим материалы. Выполняем ремонт точно в срок с еженедельными фотоотчётами.</p>
+                </div>
+                <div class="process-step animate-on-scroll">
+                    <div class="process-num">04</div>
+                    <h3>Сдача объекта</h3>
+                    <p>Принимаете работу, подписываем акт. Выдаём гарантию и акты скрытых работ.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -471,19 +665,35 @@
     <section class="team-strip" id="team">
         <div class="team-member animate-on-scroll">
             <img src="images/team1.jpg" alt="Иван Петров">
-            <div class="team-info"><h3>Иван Петров</h3><div class="role">Главный прораб</div><div class="exp">Опыт: 20 лет</div></div>
+            <div class="team-info">
+                <h3>Иван Петров</h3>
+                <div class="role">Главный прораб</div>
+                <div class="exp">Опыт: 20 лет</div>
+            </div>
         </div>
         <div class="team-member animate-on-scroll">
             <img src="images/team2.jpg" alt="Сергей Иванов">
-            <div class="team-info"><h3>Сергей Иванов</h3><div class="role">Дизайнер интерьеров</div><div class="exp">Опыт: 15 лет</div></div>
+            <div class="team-info">
+                <h3>Сергей Иванов</h3>
+                <div class="role">Дизайнер интерьеров</div>
+                <div class="exp">Опыт: 15 лет</div>
+            </div>
         </div>
         <div class="team-member animate-on-scroll">
             <img src="images/team3.jpg" alt="Алексей Смирнов">
-            <div class="team-info"><h3>Алексей Смирнов</h3><div class="role">Мастер-отделочник</div><div class="exp">Опыт: 18 лет</div></div>
+            <div class="team-info">
+                <h3>Алексей Смирнов</h3>
+                <div class="role">Мастер-отделочник</div>
+                <div class="exp">Опыт: 18 лет</div>
+            </div>
         </div>
         <div class="team-member animate-on-scroll">
             <img src="images/team4.jpg" alt="Михаил Козлов">
-            <div class="team-info"><h3>Михаил Козлов</h3><div class="role">Электрик</div><div class="exp">Опыт: 12 лет</div></div>
+            <div class="team-info">
+                <h3>Михаил Козлов</h3>
+                <div class="role">Электрик</div>
+                <div class="exp">Опыт: 12 лет</div>
+            </div>
         </div>
     </section>
 
@@ -496,13 +706,39 @@
     <section class="contact-section" id="contact">
         <div class="contact-info-panel animate-on-scroll">
             <h2>Связаться с нами</h2>
-            <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><div><strong>Адрес офиса</strong><span>г. Москва, ул. Строителей, 15, офис 204</span></div></div>
-            <div class="contact-detail"><i class="fas fa-phone"></i><div><strong>Телефон</strong><span><a href="tel:+79991234567">+7 (999) 123-45-67</a></span></div></div>
-            <div class="contact-detail"><i class="fas fa-envelope"></i><div><strong>Email</strong><span><a href="mailto:info@remont-pro.ru">info@remont-pro.ru</a></span></div></div>
-            <div class="contact-detail"><i class="fas fa-clock"></i><div><strong>Режим работы</strong><span>Пн-Сб: 9:00 — 20:00, Вс: выходной</span></div></div>
+            <div class="contact-detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <strong>Адрес офиса</strong>
+                    <span>г. Москва, ул. Строителей, 15, офис 204</span>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <strong>Телефон</strong>
+                    <span><a href="tel:+79991234567">+7 (999) 123-45-67</a></span>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <strong>Email</strong>
+                    <span><a href="mailto:info@remont-pro.ru">info@remont-pro.ru</a></span>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <strong>Режим работы</strong>
+                    <span>Пн-Сб: 9:00 — 20:00, Вс: выходной</span>
+                </div>
+            </div>
+            
             <div class="map-container">
                 <iframe src="https://yandex.ru/map-widget/v1/?ll=37.537573%2C55.703334&z=15&text=ремонт+квартир+москва" allowfullscreen="true" loading="lazy"></iframe>
             </div>
+
             <div class="social-links">
                 <a href="#" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
                 <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
@@ -514,10 +750,27 @@
             <h2>Оставить заявку</h2>
             <form id="lead-form" action="https://formspree.io/f/xvkkbvpd" method="POST">
                 <input type="hidden" name="_subject" value="Новая заявка на ремонт с сайта СТРОЙ-МАСТЕР">
-                <div class="form-group"><label for="name">Ваше имя</label><input type="text" id="name" name="name" required autocomplete="name" placeholder="Иван Иванов"></div>
-                <div class="form-group"><label for="phone">Телефон</label><input type="tel" id="phone" name="phone" required autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__"></div>
-                <div class="form-group"><label for="type">Тип помещения</label><select id="type" name="type"><option value="Новостройка">Квартира в новостройке</option><option value="Вторичка">Вторичное жильё</option><option value="Комната">Отдельная комната</option><option value="Дом/Коттедж">Частный дом / коттедж</option></select></div>
-                <div class="form-group"><label for="message">Комментарий или площадь (м²)</label><textarea id="message" name="message" required placeholder="Например: 2-комнатная квартира, 65 м², нужен косметический ремонт"></textarea></div>
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" name="name" required autocomplete="name" placeholder="Иван Иванов">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" required autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__">
+                </div>
+                <div class="form-group">
+                    <label for="type">Тип помещения</label>
+                    <select id="type" name="type">
+                        <option value="Новостройка">Квартира в новостройке</option>
+                        <option value="Вторичка">Вторичное жильё</option>
+                        <option value="Комната">Отдельная комната</option>
+                        <option value="Дом/Коттедж">Частный дом / коттедж</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Комментарий или площадь (м²)</label>
+                    <textarea id="message" name="message" required placeholder="Например: 2-комнатная квартира, 65 м², нужен косметический ремонт"></textarea>
+                </div>
                 <button type="submit" class="btn-primary" id="submit-btn">Отправить заявку</button>
                 <div id="form-status" style="margin-top: 12px; font-size: 0.9rem; text-align: center; display: none;"></div>
             </form>
@@ -535,30 +788,46 @@
     </div>
 
     <script>
+        // Плавный скролл по якорям
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) { target.scrollIntoView({ behavior: 'smooth' }); document.querySelector('.nav-links').classList.remove('active'); }
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
             });
         });
 
+        // Анимация появления элементов при скролле
         const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
         }, observerOptions);
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
+        // Маска телефона
         const phoneInput = document.getElementById('phone');
         phoneInput.addEventListener('input', function (e) {
             let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
-            if (!x[2] && x[1] !== '') { e.target.value = x[1] === '8' ? '+7' : '+7' + x[1]; }
-            else { e.target.value = !x[2] ? x[1] : '+7 (' + x[2] + (x[3] ? ') ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : ''); }
+            if (!x[2] && x[1] !== '') {
+                e.target.value = x[1] === '8' ? '+7' : '+7' + x[1];
+            } else {
+                e.target.value = !x[2] ? x[1] : '+7 (' + x[2] + (x[3] ? ') ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+            }
         });
 
+        // Обработка отправки формы
         const form = document.getElementById('lead-form');
         const submitBtn = document.getElementById('submit-btn');
         const formStatus = document.getElementById('form-status');
+
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             submitBtn.disabled = true;
@@ -566,12 +835,28 @@
             formStatus.style.display = 'block';
             formStatus.style.color = '#666';
             formStatus.textContent = 'Отправляем заявку...';
+
             try {
-                const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-                if (response.ok) { formStatus.style.color = '#28a745'; formStatus.textContent = '✓ Заявка успешно отправлена! Мы перезвоним в течение 15 минут.'; form.reset(); }
-                else { throw new Error('Ошибка сервера'); }
-            } catch (error) { formStatus.style.color = '#dc3545'; formStatus.textContent = 'Ошибка отправки. Пожалуйста, позвоните нам напрямую.'; }
-            finally { submitBtn.disabled = false; submitBtn.innerHTML = 'Отправить заявку'; }
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    formStatus.style.color = '#28a745';
+                    formStatus.textContent = '✓ Заявка успешно отправлена! Мы перезвоним в течение 15 минут.';
+                    form.reset();
+                } else {
+                    throw new Error('Ошибка сервера');
+                }
+            } catch (error) {
+                formStatus.style.color = '#dc3545';
+                formStatus.textContent = 'Ошибка отправки. Пожалуйста, позвоните нам напрямую.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Отправить заявку';
+            }
         });
     </script>
 </body>
