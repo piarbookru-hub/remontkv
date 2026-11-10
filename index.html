@@ -79,12 +79,13 @@
             overflow: hidden;
         }
         .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--bg-dark) url('images/hero.jpg') center right / auto 100% no-repeat;
-            z-index: -2;
-        }
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Фото на 60px выше блока + сдвиг вниз на 60px = начинается от нижней границы шапки */
+    background: var(--bg-dark) url('images/hero.jpg') center 60px right / auto calc(100% + 60px) no-repeat;
+    z-index: -2;
+}
         .hero::after {
             content: '';
             position: absolute;
