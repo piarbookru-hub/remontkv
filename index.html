@@ -69,25 +69,23 @@
         .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; transition: color 0.3s; }
         .nav-links a:hover { color: var(--accent); }
         
-        /* ИСПРАВЛЕНИЕ: сдвигаем блок hero вниз на высоту шапки (60px) */
         .hero {
             position: relative;
             min-height: 600px;
-            margin-top: 60px; /* ← Блок начинается ровно от нижней границы шапки */
-            padding: 60px 20px 60px; /* ← Уменьшили padding-top с 120px до 60px */
+            margin-top: 60px;
+            padding: 60px 20px 60px;
             display: flex;
             align-items: center;
             overflow: hidden;
         }
-        /* Фото строго в границах блока, прижато к правому краю, верху и низу */
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
             background-color: var(--bg-dark);
             background-image: url('images/hero.jpg');
-            background-position: right top; /* Прижато к правому краю и верху блока */
-            background-size: auto 100%; /* Высота = 100% блока, ширина пропорциональна (панорама уходит влево) */
+            background-position: right top;
+            background-size: auto 100%;
             background-repeat: no-repeat;
             z-index: -2;
         }
@@ -352,17 +350,17 @@
             .nav-links.active { display: flex; }
             .nav-links a { font-size: 14px; padding: 4px 0; }
             
-            /* Мобильный hero: тоже сдвигаем под шапку */
+            /* Мобильный hero: те же правила, что на десктопе — фото прижато к правому краю */
             .hero { 
-                margin-top: 50px; /* Шапка на мобильном чуть ниже */
+                margin-top: 50px;
                 min-height: 500px; 
                 padding: 50px 16px 60px; 
                 text-align: left; 
             }
-            /* На мобильном cover, чтобы заполнить узкий экран */
+            /* УБРАЛ cover и center — теперь фото тоже прижато к правому краю, как на десктопе */
             .hero::before { 
-                background-position: center center; 
-                background-size: cover; 
+                background-position: right top;
+                background-size: auto 100%;
             }
             .hero::after {
                 background: linear-gradient(180deg, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.75) 100%);
@@ -746,7 +744,7 @@
             </div>
         </div>
         
-        <div class="contact-form-panel animate-on-scroll">
+        <div class="contact-form-panel animate-on-scroll" id="form">
             <h2>Оставить заявку</h2>
             <form id="lead-form" action="https://formspree.io/f/xvkkbvpd" method="POST">
                 <input type="hidden" name="_subject" value="Новая заявка на ремонт с сайта СТРОЙ-МАСТЕР">
@@ -784,11 +782,10 @@
 
     <div class="mobile-sticky-bar">
         <a href="tel:+79991234567" class="btn btn-primary"><i class="fas fa-phone"></i> Позвонить</a>
-        <a href="#contact" class="btn btn-outline-light"><i class="fas fa-file-alt"></i> Заявка</a>
+        <a href="#form" class="btn btn-outline-light"><i class="fas fa-file-alt"></i> Заявка</a>
     </div>
 
     <script>
-        // Плавный скролл по якорям
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -800,7 +797,6 @@
             });
         });
 
-        // Анимация появления элементов при скролле
         const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -812,7 +808,6 @@
         }, observerOptions);
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-        // Маска телефона
         const phoneInput = document.getElementById('phone');
         phoneInput.addEventListener('input', function (e) {
             let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
@@ -823,7 +818,6 @@
             }
         });
 
-        // Обработка отправки формы
         const form = document.getElementById('lead-form');
         const submitBtn = document.getElementById('submit-btn');
         const formStatus = document.getElementById('form-status');
