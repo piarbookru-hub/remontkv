@@ -27,7 +27,6 @@
         
         section { scroll-margin-top: 70px; }
         
-        /* === АНИМАЦИИ ПРИ СКРОЛЛЕ === */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -78,14 +77,14 @@
             align-items: center;
             overflow: hidden;
         }
+        /* ИСПРАВЛЕНО: фото сдвинуто вниз на 60px (высота шапки) и увеличено на 60px, чтобы верх начинался от нижней границы шапки */
         .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    /* Фото на 60px выше блока + сдвиг вниз на 60px = начинается от нижней границы шапки */
-    background: var(--bg-dark) url('images/hero.jpg') center 60px right / auto calc(100% + 60px) no-repeat;
-    z-index: -2;
-}
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--bg-dark) url('images/hero.jpg') center 60px right / auto calc(100% + 60px) no-repeat;
+            z-index: -2;
+        }
         .hero::after {
             content: '';
             position: absolute;
@@ -296,7 +295,6 @@
         footer { background: #0f0f0f; color: #888; padding: 24px 20px; text-align: center; font-size: 13px; }
         footer .logo { color: var(--text-light); margin-bottom: 8px; font-size: 20px; }
 
-        /* === ПЛАВАЮЩАЯ ПАНЕЛЬ ДЛЯ МОБИЛЬНЫХ === */
         .mobile-sticky-bar {
             display: none;
             position: fixed;
@@ -307,7 +305,7 @@
             backdrop-filter: blur(10px);
             border-top: 2px solid var(--accent);
             padding: 12px 16px;
-            padding-bottom: max(12px, env(safe-area-inset-bottom)); /* Учет нижней полосы iPhone */
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
             z-index: 9999;
             gap: 12px;
             box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
@@ -334,7 +332,6 @@
         }
         
         @media (max-width: 768px) {
-            /* Показываем плавающую панель и добавляем отступ телу, чтобы контент не перекрывался */
             .mobile-sticky-bar { display: flex; }
             body { padding-bottom: 75px; }
 
@@ -776,14 +773,12 @@
         <p>© 2026 Ремонт квартир под ключ. Все права защищены.</p>
     </footer>
 
-    <!-- ПЛАВАЮЩАЯ ПАНЕЛЬ ДЛЯ МОБИЛЬНЫХ -->
     <div class="mobile-sticky-bar">
         <a href="tel:+79991234567" class="btn btn-primary"><i class="fas fa-phone"></i> Позвонить</a>
         <a href="#contact" class="btn btn-outline-light"><i class="fas fa-file-alt"></i> Заявка</a>
     </div>
 
     <script>
-        // 1. Плавный скролл по якорям
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -795,7 +790,6 @@
             });
         });
 
-        // 2. Анимация появления элементов при скролле
         const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -807,7 +801,6 @@
         }, observerOptions);
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-        // 3. Простая маска для телефона
         const phoneInput = document.getElementById('phone');
         phoneInput.addEventListener('input', function (e) {
             let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
@@ -818,7 +811,6 @@
             }
         });
 
-        // 4. Обработка отправки формы (защита от двойного клика + визуальный фидбек)
         const form = document.getElementById('lead-form');
         const submitBtn = document.getElementById('submit-btn');
         const formStatus = document.getElementById('form-status');
@@ -844,7 +836,6 @@
                     form.reset();
                 } else {
                     throw new Error('Ошибка сервера');
- it
                 }
             } catch (error) {
                 formStatus.style.color = '#dc3545';
