@@ -79,19 +79,19 @@
         }
         /* ИСПРАВЛЕНО: надежные раздельные свойства без ошибок синтаксиса */
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -60px; /* Растягиваем фон на 60px вверх (под шапку) */
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--bg-dark);
-            background-image: url('images/hero.jpg');
-            background-position: center top;
-            background-size: auto 110%; /* Высота с запасом, ширина пропорциональна */
-            background-repeat: no-repeat;
-            z-index: -2;
-        }
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-dark);
+    background-image: url('images/hero.jpg');
+    background-position: right top; /* Прижимаем к правому краю и верху */
+    background-size: auto 110%; /* Высота с запасом, ширина пропорциональна */
+    background-repeat: no-repeat;
+    z-index: -2;
+}
         .hero::after {
             content: '';
             position: absolute;
