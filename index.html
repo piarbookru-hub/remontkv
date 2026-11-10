@@ -353,11 +353,10 @@
             /* Мобильный hero: те же правила, что на десктопе — фото прижато к правому краю */
             .hero { 
                 margin-top: 50px;
-                min-height: 500px; 
-                padding: 50px 16px 60px; 
+                min-height: 380px;
+                padding: 30px 16px 40px; 
                 text-align: left; 
             }
-            /* УБРАЛ cover и center — теперь фото тоже прижато к правому краю, как на десктопе */
             .hero::before { 
                 background-position: right top;
                 background-size: auto 100%;
@@ -365,18 +364,18 @@
             .hero::after {
                 background: linear-gradient(180deg, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.75) 100%);
             }
-            .hero-text h1 { font-size: 36px; margin-bottom: 16px; }
-            .hero-text .tagline { font-size: 14px; margin-bottom: 20px; }
-            .btn-primary, .btn-outline-light { padding: 12px 22px; font-size: 12px; letter-spacing: 1px; width: 100%; text-align: center; }
-            .btn-outline-light { margin-left: 0; margin-top: 12px; }
+            .hero-text h1 { font-size: 28px; margin-bottom: 12px; }
+            .hero-text .tagline { font-size: 13px; margin-bottom: 16px; }
+            .btn-primary, .btn-outline-light { padding: 10px 18px; font-size: 11px; letter-spacing: 1px; width: 100%; text-align: center; }
+            .btn-outline-light { margin-left: 0; margin-top: 10px; }
             
             .hero-badge { 
-                bottom: 20px; 
+                bottom: 15px; 
                 right: 16px; 
-                padding: 14px 18px; 
-                font-size: 14px; 
+                padding: 10px 14px; 
+                font-size: 12px; 
             }
-            .hero-badge strong { font-size: 28px; }
+            .hero-badge strong { font-size: 22px; }
             
             .stats-bar { padding: 20px 16px; }
             .stats-container { grid-template-columns: repeat(2, 1fr); gap: 14px; }
