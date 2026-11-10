@@ -75,14 +75,21 @@
             padding: 120px 20px 60px;
             display: flex;
             align-items: center;
-            overflow: hidden;
+            overflow: hidden; /* Это свойство аккуратно обрежет лишние 60px сверху */
         }
-        /* ИСПРАВЛЕНО: фото сдвинуто вниз на 60px (высота шапки) и увеличено на 60px, чтобы верх начинался от нижней границы шапки */
+        /* ИСПРАВЛЕНО: надежные раздельные свойства без ошибок синтаксиса */
         .hero::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: var(--bg-dark) url('images/hero.jpg') center 60px right / auto calc(100% + 60px) no-repeat;
+            top: -60px; /* Растягиваем фон на 60px вверх (под шапку) */
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--bg-dark);
+            background-image: url('images/hero.jpg');
+            background-position: center top;
+            background-size: auto 110%; /* Высота с запасом, ширина пропорциональна */
+            background-repeat: no-repeat;
             z-index: -2;
         }
         .hero::after {
@@ -352,8 +359,11 @@
                 text-align: left; 
             }
             .hero::before { 
+                /* На мобильном возвращаем cover, чтобы заполнить узкий экран */
+                background-image: url('images/hero.jpg');
                 background-position: center center; 
                 background-size: cover; 
+                top: 0; /* Убираем сдвиг на мобильном, там он не нужен из-за cover */
             }
             .hero::after {
                 background: linear-gradient(180deg, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.75) 100%);
