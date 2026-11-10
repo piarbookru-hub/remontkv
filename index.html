@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>СТРОЙ-МАСТЕР — Ремонт квартир под ключ в Москве</title>
     <link rel="icon" type="image/x-icon" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
             --bg-dark: #1a1a1a;
             --text-dark: #2a2a2a;
             --text-light: #f5f1e8;
-            --accent: #C49A6C; /* Светло-коричневый / Бронза */
+            --accent: #C49A6C;
             --accent-hover: #B08855;
             --border-light: #d4c9a8;
         }
@@ -37,7 +37,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Задержки для каскадного появления */
         .services-list .service-row:nth-child(1) { transition-delay: 0.1s; }
         .services-list .service-row:nth-child(2) { transition-delay: 0.15s; }
         .services-list .service-row:nth-child(3) { transition-delay: 0.2s; }
@@ -71,25 +70,21 @@
         .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; transition: color 0.3s; }
         .nav-links a:hover { color: var(--accent); }
         
-        /* === HERO С ФОНОВЫМ ИЗОБРАЖЕНИЕМ И ГРАДИЕНТОМ === */
         .hero {
             position: relative;
-            min-height: 600px; /* Увеличил для лучшего вида на десктопе */
+            min-height: 600px;
             padding: 120px 20px 60px;
             display: flex;
             align-items: center;
             overflow: hidden;
         }
-        /* Фото на весь фон: ВПИСЫВАЕТСЯ ПО ВЫСОТЕ (100%), ширина пропорциональна (auto) */
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            /* var(--bg-dark) страхует от пустых полос на сверхшироких экранах */
             background: var(--bg-dark) url('images/hero.jpg') center right / auto 100% no-repeat;
             z-index: -2;
         }
-        /* Градиентная тень для читаемости текста */
         .hero::after {
             content: '';
             position: absolute;
@@ -100,7 +95,7 @@
         
         .hero-text {
             position: relative;
-            z-index: 3; /* Поднял выше, чтобы точно быть поверх бейджа */
+            z-index: 3;
             max-width: 650px;
         }
         .hero-text h1 { 
@@ -121,7 +116,7 @@
         }
         
         .btn-primary { 
-            display: inline-block; 
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
             padding: 14px 30px; 
             background: var(--accent); 
             color: var(--text-light); 
@@ -142,7 +137,7 @@
             box-shadow: 0 5px 15px rgba(196, 154, 108, 0.3); 
         }
         .btn-outline-light { 
-            display: inline-block; 
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
             padding: 14px 30px; 
             background: transparent; 
             color: var(--text-light); 
@@ -299,12 +294,49 @@
         
         footer { background: #0f0f0f; color: #888; padding: 24px 20px; text-align: center; font-size: 13px; }
         footer .logo { color: var(--text-light); margin-bottom: 8px; font-size: 20px; }
+
+        /* === ПЛАВАЮЩАЯ ПАНЕЛЬ ДЛЯ МОБИЛЬНЫХ === */
+        .mobile-sticky-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid var(--accent);
+            padding: 12px 16px;
+            padding-bottom: max(12px, env(safe-area-inset-bottom)); /* Учет нижней полосы iPhone */
+            z-index: 9999;
+            gap: 12px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
+        }
+        .mobile-sticky-bar .btn {
+            flex: 1;
+            padding: 14px 10px;
+            font-size: 14px;
+            text-align: center;
+            justify-content: center;
+        }
+        .mobile-sticky-bar .btn-outline-light {
+            border-color: var(--accent);
+            color: var(--accent);
+            margin-left: 0;
+        }
+        .mobile-sticky-bar .btn-outline-light:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+        }
         
         @media (max-width: 1024px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
         }
         
         @media (max-width: 768px) {
+            /* Показываем плавающую панель и добавляем отступ телу, чтобы контент не перекрывался */
+            .mobile-sticky-bar { display: flex; }
+            body { padding-bottom: 75px; }
+
             nav { padding: 10px 0; }
             .logo { font-size: 20px; }
             .menu-toggle { display: block; }
@@ -316,15 +348,13 @@
             .nav-links.active { display: flex; }
             .nav-links a { font-size: 14px; padding: 4px 0; }
             
-            /* Мобильный Hero */
             .hero { 
-                min-height: 500px; /* Гарантируем высоту для картинки на мобильном */
+                min-height: 500px; 
                 padding: 100px 16px 60px; 
                 text-align: left; 
             }
             .hero::before { 
                 background-position: center center; 
-                /* На мобильном разрешаем cover, чтобы заполнить узкий экран по ширине, если картинка не влезает по высоте */
                 background-size: cover; 
             }
             .hero::after {
@@ -711,7 +741,7 @@
         
         <div class="contact-form-panel animate-on-scroll">
             <h2>Оставить заявку</h2>
-            <form action="https://formspree.io/f/xvkkbvpd" method="POST">
+            <form id="lead-form" action="https://formspree.io/f/xvkkbvpd" method="POST">
                 <input type="hidden" name="_subject" value="Новая заявка на ремонт с сайта СТРОЙ-МАСТЕР">
                 <div class="form-group">
                     <label for="name">Ваше имя</label>
@@ -734,7 +764,8 @@
                     <label for="message">Комментарий или площадь (м²)</label>
                     <textarea id="message" name="message" required placeholder="Например: 2-комнатная квартира, 65 м², нужен косметический ремонт"></textarea>
                 </div>
-                <button type="submit" class="btn-primary">Отправить заявку</button>
+                <button type="submit" class="btn-primary" id="submit-btn">Отправить заявку</button>
+                <div id="form-status" style="margin-top: 12px; font-size: 0.9rem; text-align: center; display: none;"></div>
             </form>
         </div>
     </section>
@@ -744,8 +775,14 @@
         <p>© 2026 Ремонт квартир под ключ. Все права защищены.</p>
     </footer>
 
+    <!-- ПЛАВАЮЩАЯ ПАНЕЛЬ ДЛЯ МОБИЛЬНЫХ -->
+    <div class="mobile-sticky-bar">
+        <a href="tel:+79991234567" class="btn btn-primary"><i class="fas fa-phone"></i> Позвонить</a>
+        <a href="#contact" class="btn btn-outline-light"><i class="fas fa-file-alt"></i> Заявка</a>
+    </div>
+
     <script>
-        // Плавный скролл по якорям
+        // 1. Плавный скролл по якорям
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -757,12 +794,8 @@
             });
         });
 
-        // Анимация появления элементов при скролле (Intersection Observer)
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
+        // 2. Анимация появления элементов при скролле
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -771,9 +804,54 @@
                 }
             });
         }, observerOptions);
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
+        // 3. Простая маска для телефона
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', function (e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+            if (!x[2] && x[1] !== '') {
+                e.target.value = x[1] === '8' ? '+7' : '+7' + x[1];
+            } else {
+                e.target.value = !x[2] ? x[1] : '+7 (' + x[2] + (x[3] ? ') ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+            }
+        });
+
+        // 4. Обработка отправки формы (защита от двойного клика + визуальный фидбек)
+        const form = document.getElementById('lead-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const formStatus = document.getElementById('form-status');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+            formStatus.style.display = 'block';
+            formStatus.style.color = '#666';
+            formStatus.textContent = 'Отправляем заявку...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    formStatus.style.color = '#28a745';
+                    formStatus.textContent = '✓ Заявка успешно отправлена! Мы перезвоним в течение 15 минут.';
+                    form.reset();
+                } else {
+                    throw new Error('Ошибка сервера');
+ it
+                }
+            } catch (error) {
+                formStatus.style.color = '#dc3545';
+                formStatus.textContent = 'Ошибка отправки. Пожалуйста, позвоните нам напрямую.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Отправить заявку';
+            }
         });
     </script>
 </body>
