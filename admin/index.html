@@ -93,15 +93,16 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
 .log-item.error { color: #ff4444; }
 .log-item.working { color: #F40009; }
 
-.edit-panel { position: fixed; bottom: 0; left: 0; right: 0; background: #1a1a1a; border-top: 2px solid #F40009; padding: 20px; transform: translateY(100%); visibility: hidden; transition: transform .3s, visibility .3s; z-index: 1000; box-shadow: 0 -10px 40px rgba(0, 0, 0, .5); max-height: 70vh; overflow-y: auto; }
+.edit-panel { position: fixed; bottom: 0; left: 0; right: 0; background: #1a1a1a; border-top: 2px solid #F40009; transform: translateY(100%); visibility: hidden; transition: transform .3s, visibility .3s; z-index: 1000; box-shadow: 0 -10px 40px rgba(0, 0, 0, .5); max-height: 75vh; display: flex; flex-direction: column; }
 .edit-panel.active { transform: translateY(0); visibility: visible; }
-.edit-panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.edit-panel-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px 12px; flex-shrink: 0; }
 .edit-panel-header h3 { font-size: 14px; font-weight: 600; }
 .key-badge { background: #2a2a2a; color: #888; padding: 2px 8px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 11px; margin-left: 8px; }
 .edit-panel-close { background: transparent; border: none; color: #888; font-size: 20px; cursor: pointer; padding: 4px 8px; }
 .edit-panel-close:hover { color: #fff; }
+.edit-panel-body { overflow-y: auto; padding: 0 20px 12px; flex: 1; min-height: 0; }
 .edit-panel textarea { width: 100%; min-height: 90px; padding: 12px; background: #0f0f0f; border: 1px solid #333; border-radius: 8px; color: #fff; font: inherit; font-size: 14px; resize: vertical; }
-.edit-panel-actions { display: flex; gap: 10px; margin-top: 12px; justify-content: flex-end; }
+.edit-panel-actions { display: flex; gap: 10px; justify-content: flex-end; padding: 12px 20px 16px; border-top: 1px solid #2a2a2a; flex-shrink: 0; }
 
 .link-section { margin-top: 12px; padding-top: 12px; border-top: 1px solid #2a2a2a; }
 .link-section label.field-label { display: block; font-size: 12px; color: #aaa; margin-bottom: 6px; font-weight: 500; }
@@ -127,12 +128,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
 .file-upload i { font-size: 24px; color: #F40009; }
 .upload-text { flex: 1; font-size: 14px; color: #aaa; }
 .file-upload input[type=file] { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.file-upload.disabled { opacity: .5; cursor: not-allowed; }
-
-.file-slot-box { font-size: 12px; line-height: 1.5; padding: 10px 12px; border-radius: 6px; margin: 6px 0 10px; word-break: break-all; }
-.file-slot-box.ok { background: rgba(0, 204, 102, .08); border: 1px solid rgba(0, 204, 102, .35); color: #00cc66; }
-.file-slot-box.cur { background: rgba(201, 169, 97, .08); border: 1px solid rgba(201, 169, 97, .35); color: #c9a961; }
-.file-slot-box.full { background: rgba(255, 68, 68, .08); border: 1px solid rgba(255, 68, 68, .35); color: #ff4444; }
 
 .status-bar { position: fixed; top: 60px; right: 24px; background: #1a1a1a; padding: 12px 18px; border-radius: 8px; border: 1px solid #2a2a2a; font-size: 14px; display: none; z-index: 2000; max-width: 420px; }
 .status-bar.show { display: block; animation: slideIn .3s ease-out; }
@@ -148,6 +143,22 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
 .btn-group { display: flex; gap: 10px; margin-top: 16px; }
 .btn-group .btn { flex: 1; }
 .btn-small { width: auto; padding: 10px 16px; font-size: 13px; }
+
+.calc-panel { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px; }
+.calc-panel.active { display: flex; }
+.calc-panel-inner { background: #1a1a1a; border-radius: 12px; width: 100%; max-width: 700px; max-height: 90vh; display: flex; flex-direction: column; border: 1px solid #2a2a2a; }
+.calc-panel-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid #2a2a2a; }
+.calc-panel-header h2 { font-size: 18px; }
+.calc-panel-body { flex: 1; overflow-y: auto; padding: 24px; }
+.calc-panel-footer { padding: 16px 24px; border-top: 1px solid #2a2a2a; display: flex; gap: 10px; justify-content: flex-end; }
+.calc-section { margin-bottom: 28px; }
+.calc-section h3 { font-size: 15px; margin-bottom: 12px; color: #F40009; }
+.calc-field-row { display: grid; grid-template-columns: 1fr 140px; gap: 10px; margin-bottom: 8px; align-items: center; }
+.calc-field-row label { font-size: 13px; color: #aaa; }
+.calc-field-row input { padding: 8px 12px; background: #0f0f0f; border: 1px solid #333; border-radius: 6px; color: #fff; font-size: 14px; width: 100%; }
+.calc-field-row input:focus { outline: none; border-color: #F40009; }
+.calc-panel-loading { text-align: center; padding: 40px; color: #888; }
+.calc-panel-error { color: #ff4444; padding: 20px; background: rgba(255,68,68,0.1); border-radius: 8px; }
 
 @media (prefers-reduced-motion: reduce) { .status-bar.show { animation: none; } .edit-panel, .btn, .toolbar-btn { transition: none; } }
 </style>
@@ -189,6 +200,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
                 <button class="toolbar-btn" id="openSiteBtn" title="Открыть текущую страницу в новой вкладке"><i class="fas fa-external-link-alt"></i> Открыть сайт</button>
                 <button class="toolbar-btn" id="checkBtn" title="Проверить токен"><i class="fas fa-shield-alt"></i> Проверить</button>
                 <button class="toolbar-btn" id="reloadBtn" title="Обновить превью"><i class="fas fa-sync"></i> Обновить</button>
+                <button class="toolbar-btn" id="calcBtn" title="Настройки калькулятора (цены, материалы, работы)"><i class="fas fa-calculator"></i> Калькулятор</button>
                 <button class="toolbar-btn warning" id="cleanBtn" title="Удалить все метки data-edit и data-img из текущей страницы"><i class="fas fa-broom"></i> Очистить метки</button>
                 <button class="toolbar-btn" id="resetBtn" title="Подготовить текущую страницу заново"><i class="fas fa-redo"></i> Переподготовить</button>
                 <button class="toolbar-btn" id="logoutBtn" title="Выйти" aria-label="Выйти"><i class="fas fa-sign-out-alt"></i></button>
@@ -222,19 +234,35 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
             <div class="loader-text">Загрузка страницы...</div>
             <div class="loader-status" id="loaderStatus">Инициализация</div>
         </div>
-        <iframe id="siteIframe" class="site-iframe" title="Превью сайта" sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <iframe id="siteIframe" class="site-iframe" title="Превью сайта" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe>
     </div>
 </div>
 
 <div class="edit-panel" id="editPanel" role="dialog" aria-modal="true" aria-label="Редактирование">
     <div class="edit-panel-header">
         <h3><span id="editTitle">Редактирование</span><span class="key-badge" id="editKey"></span></h3>
-        <button class="edit-panel-close" id="closePanelBtn" aria-label="Закрыть">?</button>
+        <button class="edit-panel-close" id="closePanelBtn" aria-label="Закрыть">✕</button>
     </div>
-    <div id="editPanelContent"></div>
+    <div class="edit-panel-body" id="editPanelContent"></div>
     <div class="edit-panel-actions">
         <button class="toolbar-btn btn-secondary" id="cancelBtn">Отмена</button>
         <button class="toolbar-btn primary" id="applyBtn">Применить</button>
+    </div>
+</div>
+
+<div class="calc-panel" id="calcPanel">
+    <div class="calc-panel-inner">
+        <div class="calc-panel-header">
+            <h2><i class="fas fa-calculator" style="color:#F40009;"></i> Настройки калькулятора</h2>
+            <button class="edit-panel-close" id="calcPanelClose" aria-label="Закрыть">✕</button>
+        </div>
+        <div class="calc-panel-body" id="calcPanelBody">
+            <div class="calc-panel-loading">Загрузка настроек из репозитория...</div>
+        </div>
+        <div class="calc-panel-footer">
+            <button class="toolbar-btn btn-secondary" id="calcPanelCancel">Отмена</button>
+            <button class="toolbar-btn primary" id="calcPanelSave"><i class="fas fa-cloud-upload-alt"></i> Сохранить в GitHub</button>
+        </div>
     </div>
 </div>
 
@@ -251,17 +279,8 @@ if (typeof CMS_CONFIG === 'undefined') {
 const LINK_COLORS = { inherit: null, brown: '#8B4513', lightbrown: '#CD853F' };
 const XHTML_NS = 'http://www.w3.org/1999/xhtml';
 
-const PREVIEW_SANDBOX = 'allow-same-origin allow-popups allow-popups-to-escape-sandbox';
+const PREVIEW_SANDBOX = 'allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox';
 const VIEW_SANDBOX = 'allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox';
-
-// Файлы для скачивания: папка files/, максимум 3 файла одновременно,
-// имена prices, prices1, prices2, prices3... с ЛЮБЫМ расширением файла.
-const FILES_FOLDER = 'files';
-const FILES_BASE = 'prices';
-const MAX_FILES = 3;
-const MAX_FILE_SIZE = 1024 * 1024; // 1 МБ
-const BLOCKED_EXTS = ['exe', 'bat', 'cmd', 'sh', 'com', 'scr', 'msi', 'vbs', 'ps1', 'jar'];
-const SLOT_RE = /^prices(\d*)(\.[^/]*)?$/i;
 
 const $ = id => document.getElementById(id);
 
@@ -285,8 +304,6 @@ let siteBaseUrl = '';
 let siteBasePath = '/';
 let repoDeployId = null;
 let deployPollGen = 0;
-let panelFileData = null, panelFileNew = null, panelFileOld = null;
-let sessionFileNames = [];
 const API = `https://api.github.com/repos/${CMS_CONFIG.owner}/${CMS_CONFIG.repo}`;
 
 $('projectNameHeader').textContent = CMS_CONFIG.projectName || 'Редактор';
@@ -336,7 +353,9 @@ function validLinkUrl(u) {
 
 function isAdminSelf(file) {
     try {
-        return new URL(encPath(file), siteBaseUrl).pathname === window.location.pathname;
+        const norm = p => p.replace(/index\.html?$/i, '').replace(/\/+$/, '');
+        const u = new URL(encPath(file), siteBaseUrl);
+        return u.origin === window.location.origin && norm(u.pathname) === norm(window.location.pathname);
     } catch { return false; }
 }
 
@@ -377,7 +396,8 @@ function stampDeployId(html, id) {
         return html.replace(/<meta\s+name=["']cms-deploy-id["'][^>]*>/i, tag);
     }
     if (/<meta\s+charset[^>]*>/i.test(html)) return html.replace(/<meta\s+charset[^>]*>/i, m => m + '\n' + tag);
-    return html.replace(/<head(\s[^>]*)?>/i, m => m + '\n' + tag);
+    if (/<head(\s[^>]*)?>/.test(html)) return html.replace(/<head(\s[^>]*)?>/i, m => m + '\n' + tag);
+    return html.replace(/^(<!DOCTYPE[^>]*>\s*)?/i, m => m + tag + '\n');
 }
 
 function setDeployBadge(state, html) {
@@ -409,7 +429,8 @@ async function verifyDeploy(expectedId, singleCheck) {
         for (let i = 0; i < 30; i++) {
             await new Promise(r => setTimeout(r, 4000));
             if (gen !== deployPollGen) return;
-            const live2 = await fetchLiveDeployId();
+            let live2 = null;
+            try { live2 = await fetchLiveDeployId(); } catch {}
             if (gen !== deployPollGen) return;
             if (live2 === expectedId) {
                 setDeployBadge('live', '<i class="fas fa-check-circle"></i> Сайт обновлён');
@@ -482,42 +503,6 @@ async function putFile(path, b64, sha, message) {
     return (await gh(`${API}/contents/${encPath(path)}`, {
         method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
     })).json();
-}
-
-async function delFile(path) {
-    const sha = await getSha(path);
-    if (!sha) return;
-    await gh(`${API}/contents/${encPath(path)}`, {
-        method: 'DELETE', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: `Удаление ${path}`, sha, branch: CMS_CONFIG.branch })
-    });
-}
-
-// Список имён файлов-слотов в папке files/ (только prices, prices1, prices2...)
-async function listSlotFiles() {
-    try {
-        const d = await (await gh(`${API}/contents/${encPath(FILES_FOLDER)}?ref=${encodeURIComponent(CMS_CONFIG.branch)}`)).json();
-        if (!Array.isArray(d)) return [];
-        return d.filter(x => x.type === 'file' && SLOT_RE.test(x.name)).map(x => x.name);
-    } catch (e) { return []; }
-}
-
-function slotNumber(name) {
-    const m = name.match(SLOT_RE);
-    if (!m) return -1;
-    return m[1] === '' ? 0 : parseInt(m[1], 10);
-}
-
-function nextSlotNumber(names) {
-    let max = -1;
-    names.forEach(n => { const v = slotNumber(n); if (v > max) max = v; });
-    return max + 1 < 0 ? 0 : max + 1;
-}
-
-function buildSlotName(n, fileName) {
-    const m = fileName.match(/\.([^.]+)$/);
-    const ext = m ? m[1].toLowerCase() : '';
-    return FILES_BASE + (n === 0 ? '' : String(n)) + (ext ? '.' + ext : '');
 }
 
 function interpretError(status, body = '') {
@@ -632,6 +617,7 @@ function logout() {
     if (Object.keys(pending).length && !confirm('Есть несохранённые изменения. Выйти?')) return;
     ss.del('gh_token');
     ls.del('cms_currentFile');
+    pending = {};
     location.reload();
 }
 
@@ -641,6 +627,7 @@ function showSetup() {
     $('hintBanner').style.display = 'none';
     $('prepareBtn').disabled = false;
     $('prepareBtn').innerHTML = '<i class="fas fa-download"></i> Подготовить страницу';
+    $('setupTitle').textContent = 'Подготовка ' + currentFile;
 }
 
 function showEditor() {
@@ -654,9 +641,6 @@ function buildPreviewHtml(text) {
     const d = new DOMParser().parseFromString(text, 'text/html');
     d.querySelectorAll('meta[http-equiv="refresh" i]').forEach(n => n.remove());
     d.querySelectorAll('base').forEach(b => b.remove());
-    
-    // ИСПРАВЛЕНО: принудительно показываем все блоки, которые появляются при скролле
-    // В iframe IntersectionObserver не срабатывает — блоки остаются невидимыми
     const fixStyle = d.createElement('style');
     fixStyle.textContent = `
         .animate-on-scroll { opacity: 1 !important; transform: none !important; }
@@ -665,7 +649,6 @@ function buildPreviewHtml(text) {
         .hidden-on-load, .invisible { opacity: 1 !important; visibility: visible !important; }
     `;
     d.head.appendChild(fixStyle);
-    
     const base = d.createElement('base');
     base.setAttribute('href', pageUrl().href);
     d.head.insertBefore(base, d.head.firstChild);
@@ -781,14 +764,14 @@ async function prepareCurrentFile(logContainer = null) {
         if (logContainer) {
             const div = document.createElement('div');
             div.className = 'log-item ' + type;
-            div.textContent = (type === 'done' ? '✓ ' : type === 'error' ? '✗ ' : '> ') + msg;
+            div.textContent = (type === 'done' ? '✓ ' : type === 'error' ? '✗ ' : '→ ') + msg;
             logContainer.appendChild(div);
             logContainer.scrollTop = logContainer.scrollHeight;
         }
     };
     try {
         if (isAdminSelf(fileBeingPrepared)) {
-            li('✗ Операция отменена: это файл самой админ-панели', 'error');
+            li('⚠ Операция отменена: это файл самой админ-панели', 'error');
             showStatus('Админку нельзя редактировать через саму себя. Переместите её в папку admin/.', 'error');
             return false;
         }
@@ -845,6 +828,7 @@ async function navigateTo(href) {
         pending = {}; markUnsaved();
     }
     const prevFile = currentFile;
+    const prevView = viewModeUrl;
     currentFile = cleanPath;
     saveCurrentFile();
     viewModeUrl = null;
@@ -869,16 +853,22 @@ async function navigateTo(href) {
                 showStatus('✓ Страница ' + cleanPath + ' готова к редактированию!', 'success');
             } else {
                 currentFile = prevFile;
+                viewModeUrl = prevView;
                 saveCurrentFile();
                 updatePageIndicator();
+                $('setupScreen').classList.remove('active');
+                showEditor();
             }
         }
     } catch (e) {
         const i = interpretError(e.status, e.body);
         showStatus('✗ Не удалось открыть ' + cleanPath + ': ' + i.title, 'error');
         currentFile = prevFile;
+        viewModeUrl = prevView;
         saveCurrentFile();
         updatePageIndicator();
+        $('setupScreen').classList.remove('active');
+        showEditor();
     }
 }
 
@@ -1027,7 +1017,7 @@ function findImgTargets(doc, key, path) {
 }
 
 function readTextLink(key) {
-    const dflt = { url: '', linkColor: 'inherit', linkTarget: '_blank', fileName: '' };
+    const dflt = { url: '', linkColor: 'inherit', linkTarget: '_blank' };
     let d = null;
     try { d = $('siteIframe').contentDocument; } catch {}
     if (!d) return dflt;
@@ -1040,8 +1030,7 @@ function readTextLink(key) {
     return {
         url: link.getAttribute('href') || '',
         linkColor: LINK_COLORS[storedColor] !== undefined ? storedColor : 'inherit',
-        linkTarget: target === '_self' ? '_self' : '_blank',
-        fileName: link.getAttribute('data-cms-file') || ''
+        linkTarget: target === '_self' ? '_self' : '_blank'
     };
 }
 
@@ -1058,15 +1047,13 @@ function readImageLink(key, path) {
         linkEl = inner ? inner.closest('a') : null;
     }
     if (!linkEl) return { url: '', linkTarget: '_blank' };
+    if (!linkEl.hasAttribute('data-cms-link')) return { url: '', linkTarget: '_blank' };
     const href = linkEl.getAttribute('href') || '';
     const targetAttr = linkEl.getAttribute('target') || '_blank';
-    if (linkEl.hasAttribute('data-cms-link') || (!/^(tel:|mailto:|#)/i.test(href))) {
-        return { url: href, linkTarget: targetAttr === '_self' ? '_self' : '_blank' };
-    }
-    return { url: '', linkTarget: '_blank' };
+    return { url: href, linkTarget: targetAttr === '_self' ? '_self' : '_blank' };
 }
 
-function applyLinkToText(doc, el, url, keepColor, linkColor, linkTarget, fileName) {
+function applyLinkToText(doc, el, url, keepColor, linkColor, linkTarget) {
     if (!el) return;
     let link = el.closest ? el.closest('a') : null;
     if (url && url.trim()) {
@@ -1081,10 +1068,6 @@ function applyLinkToText(doc, el, url, keepColor, linkColor, linkTarget, fileNam
         link.setAttribute('target', linkTarget === '_self' ? '_self' : '_blank');
         if (linkTarget === '_blank') link.setAttribute('rel', 'noopener');
         else link.removeAttribute('rel');
-        if (fileName !== undefined) {
-            if (fileName) link.setAttribute('data-cms-file', fileName);
-            else link.removeAttribute('data-cms-file');
-        }
         const colorKey = linkColor && LINK_COLORS[linkColor] !== undefined ? linkColor : 'inherit';
         link.setAttribute('data-link-color', colorKey);
         if (colorKey === 'inherit' || keepColor) {
@@ -1102,7 +1085,7 @@ function applyLinkToText(doc, el, url, keepColor, linkColor, linkTarget, fileNam
         if (link.textContent.trim() === '' && !link.querySelector('img, [data-edit], [data-img]')) {
             link.parentNode.removeChild(link);
         } else {
-            ['data-cms-link', 'data-keep-color', 'data-link-color', 'data-cms-file', 'href', 'target', 'rel'].forEach(a => link.removeAttribute(a));
+            ['data-cms-link', 'data-keep-color', 'data-link-color', 'href', 'target', 'rel'].forEach(a => link.removeAttribute(a));
             link.style.color = '';
             link.style.textDecoration = '';
         }
@@ -1169,6 +1152,13 @@ function cleanHtmlMarks(html) {
 function processHtml(html) {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     let textCounter = 0;
+    doc.querySelectorAll('[data-edit^="auto_"]').forEach(el => {
+        const m = el.getAttribute('data-edit').match(/^auto_(\d+)$/);
+        if (m) {
+            const n = parseInt(m[1], 10);
+            if (n > textCounter) textCounter = n;
+        }
+    });
     const SKIP_TAGS = new Set(['script', 'style', 'title', 'meta', 'noscript', 'input', 'textarea', 'select', 'option', 'head', 'link', 'template']);
     const extra = (CMS_CONFIG.extraEditableSelectors || []).concat('[data-editable]').join(', ');
     const forced = new Set();
@@ -1266,9 +1256,8 @@ function openPanel(title, key) {
     $('editPanel').classList.add('active');
 }
 
-async function openText(key, value) {
+function openText(key, value) {
     editKind = 'text'; editKey = key;
-    panelFileData = null; panelFileNew = null; panelFileOld = null;
     openPanel('Редактирование текста', key);
     const linkData = readTextLink(key);
     editOrigText = linkData;
@@ -1278,16 +1267,6 @@ async function openText(key, value) {
             <label class="field-label" for="editLink"><i class="fas fa-link" style="color:#F40009;"></i> Ссылка при клике на текст (необязательно)</label>
             <input type="url" id="editLink" placeholder="https://..." autocomplete="off">
             <div class="link-hint">Оставьте поле пустым, чтобы убрать ссылку с текста.</div>
-        </div>
-        <div class="link-section">
-            <span class="field-label"><i class="fas fa-paperclip" style="color:#c9a961;"></i> Файл для скачивания (прайс, документ)</span>
-            <div class="file-slot-box ok" id="fileSlotInfo">Проверяю папку ${FILES_FOLDER}/…</div>
-            <label class="file-upload" id="docUploadLabel">
-                <i class="fas fa-file-upload"></i>
-                <div class="upload-text"><strong>Прикрепить файл</strong><br><small>Любой формат, до 1 МБ. Файл уйдёт в папку ${FILES_FOLDER}/</small></div>
-                <input type="file" id="docFileInput">
-            </label>
-            <div id="filePreview" style="margin-top:8px;"></div>
         </div>
         <div class="link-option">
             <span class="field-label"><i class="fas fa-palette" style="color:#CD853F;"></i> Цвет ссылки</span>
@@ -1313,55 +1292,6 @@ async function openText(key, value) {
     const targetRadio = document.querySelector(`input[name="linkTarget"][value="${linkData.linkTarget}"]`) || document.querySelector('input[name="linkTarget"][value="_blank"]');
     if (targetRadio) targetRadio.checked = true;
     setTimeout(() => ta.focus(), 100);
-
-    // Состояние папки files/
-    const slotNames = await listSlotFiles();
-    const info = $('fileSlotInfo');
-    const input = $('docFileInput');
-    const label = $('docUploadLabel');
-    if (!info || !input) return;
-    const allNames = slotNames.concat(sessionFileNames);
-    if (linkData.fileName) {
-        panelFileOld = linkData.fileName;
-        info.className = 'file-slot-box cur';
-        info.innerHTML = `<i class="fas fa-file"></i> Текущий файл: <strong>${FILES_FOLDER}/${esc(linkData.fileName)}</strong><br>Загрузите новый — он получит следующий номер, а старый файл удалится.`;
-    } else if (slotNames.length >= MAX_FILES) {
-        info.className = 'file-slot-box full';
-        info.innerHTML = `<i class="fas fa-exclamation-triangle"></i> В папке ${FILES_FOLDER}/ уже ${MAX_FILES} файла: ${slotNames.map(n => esc(n)).join(', ')}.<br>Чтобы прикрепить файл сюда — удалите ссылку с одного из текстов (освободите слот).`;
-        label.classList.add('disabled');
-        input.disabled = true;
-    } else {
-        const n = nextSlotNumber(allNames);
-        info.className = 'file-slot-box ok';
-        info.innerHTML = `<i class="fas fa-info-circle"></i> Файл запишется как <strong>${FILES_FOLDER}/${esc(FILES_BASE + (n === 0 ? '' : n))}.&lt;расширение вашего файла&gt;</strong><br>Занято ${slotNames.length} из ${MAX_FILES} слотов.`;
-    }
-
-    input.addEventListener('change', e => {
-        const file = e.target.files[0];
-        if (!file) return;
-        if (file.size > MAX_FILE_SIZE) {
-            e.target.value = '';
-            return showStatus('Файл слишком большой (максимум 1 МБ)', 'error');
-        }
-        const m = file.name.match(/\.([^.]+)$/);
-        const ext = m ? m[1].toLowerCase() : '';
-        if (ext && BLOCKED_EXTS.includes(ext)) {
-            e.target.value = '';
-            return showStatus('Формат .' + ext + ' запрещён (исполняемые файлы)', 'error');
-        }
-        const names = slotNames.concat(sessionFileNames);
-        const newName = buildSlotName(nextSlotNumber(names), file.name);
-        const rd = new FileReader();
-        rd.onload = ev => {
-            panelFileData = ev.target.result;
-            panelFileNew = newName;
-            panelFileOld = linkData.fileName || null;
-            sessionFileNames.push(newName);
-            $('editLink').value = FILES_FOLDER + '/' + newName;
-            $('filePreview').innerHTML = `<div style="color: #00cc66; font-size: 13px;"><i class="fas fa-check-circle"></i> Файл: <strong>${esc(file.name)}</strong> (${(file.size / 1024).toFixed(0)} КБ) → будет записан как <strong>${FILES_FOLDER}/${esc(newName)}</strong>${panelFileOld ? ', старый ' + esc(panelFileOld) + ' удалится' : ''}</div>`;
-        };
-        rd.readAsDataURL(file);
-    });
 }
 
 function openImage(path, src, imgId) {
@@ -1374,7 +1304,7 @@ function openImage(path, src, imgId) {
     editOrigImg = imgLinkData;
 
     const currentExt = (path.split('.').pop() || '').toLowerCase();
-    const extDisplay = currentExt ? `<code style="background:#2a2a2a;padding:2px 6px;border-radius:3px;font-size:11px;">.${currentExt}</code>` : '';
+    const extDisplay = currentExt ? `<code style="background:#2a2a2a;padding:2px 6px;border-radius:3px;font-size:11px;">.${esc(currentExt)}</code>` : '';
 
     $('editPanelContent').innerHTML = `
         <div style="margin-bottom: 16px;">
@@ -1410,20 +1340,29 @@ function openImage(path, src, imgId) {
     $('imageFileInput').addEventListener('change', e => {
         const file = e.target.files[0];
         if (!file) return;
+
         if (!IMAGE_TYPES.includes(file.type) && !file.type.startsWith('image/')) {
             e.target.value = '';
             return showStatus('Файл должен быть изображением (JPG, PNG, WebP, GIF, SVG)', 'error');
         }
+
         if (file.size > 2 * 1024 * 1024) {
             e.target.value = '';
             return showStatus('Файл слишком большой (максимум 2 МБ)', 'error');
         }
+
         const fileExt = (file.name.split('.').pop() || '').toLowerCase();
         const ALLOWED_EXTS = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg', 'bmp', 'ico'];
         if (!ALLOWED_EXTS.includes(fileExt)) {
             e.target.value = '';
             return showStatus('Неподдерживаемое расширение файла: .' + fileExt, 'error');
         }
+
+        if ((currentExt === 'svg') !== (fileExt === 'svg')) {
+            e.target.value = '';
+            return showStatus('SVG заменяется только на SVG, растровое фото — только на растровое (JPG/PNG/WebP)', 'error');
+        }
+
         const rd = new FileReader();
         rd.onload = ev => {
             pendingImg = ev.target.result;
@@ -1439,36 +1378,29 @@ function applyEdit() {
 
     if (editKind === 'text') {
         const v = $('editTextArea').value;
-        let linkUrl = $('editLink').value.trim();
+        const linkUrl = $('editLink').value.trim();
         if (!validLinkUrl(linkUrl)) return showStatus('Недопустимая ссылка (разрешены http, https, tel, mailto, #)', 'error');
-        let fileNew = panelFileNew, fileOld = panelFileOld, fileData = panelFileData;
-        if (!linkUrl) { fileNew = null; fileData = null; }
-        const deleteOld = (!linkUrl && editOrigText && editOrigText.fileName && !fileData) ? editOrigText.fileName : null;
         const colorEl = document.querySelector('input[name="linkColor"]:checked');
         const targetEl = document.querySelector('input[name="linkTarget"]:checked');
         const linkColor = colorEl ? colorEl.value : 'inherit';
         const linkTarget = targetEl ? targetEl.value : '_blank';
         const keepColor = linkColor === 'inherit';
-        const o = editOrigText || { url: '', linkColor: 'inherit', linkTarget: '_blank', fileName: '' };
+        const o = editOrigText || { url: '', linkColor: 'inherit', linkTarget: '_blank' };
         const prev = pending['t:' + editKey];
         const changed = linkUrl !== o.url || (!!linkUrl && (linkColor !== o.linkColor || linkTarget !== o.linkTarget));
-        const linkChanged = changed || !!fileData || !!deleteOld || !!(prev && prev.linkChanged);
+        const linkChanged = changed || !!(prev && prev.linkChanged);
         pending['t:' + editKey] = {
-            type: 'text', value: v, link: linkUrl, keepColor, linkColor, linkTarget, linkChanged,
-            fileNew: fileNew || (prev && prev.fileNew) || null,
-            fileOld: fileOld || (prev && prev.fileOld) || null,
-            fileData: fileData || (prev && prev.fileData) || null,
-            deleteOld: deleteOld || (prev && prev.deleteOld) || null
+            type: 'text', value: v, link: linkUrl, keepColor, linkColor, linkTarget, linkChanged
         };
         if (d) {
             const el = d.querySelector(`[data-edit="${CSS.escape(editKey)}"]`);
             if (el) {
                 el.textContent = keepWs(el.textContent, v);
-                if (linkChanged) applyLinkToText(d, el, linkUrl, keepColor, linkColor, linkTarget, fileData ? fileNew : undefined);
+                if (linkChanged) applyLinkToText(d, el, linkUrl, keepColor, linkColor, linkTarget);
                 if (!linkUrl) syncHref(el, v);
             }
         }
-        showStatus((fileData ? 'Файл и ссылка применены.' : linkUrl ? 'Изменения и ссылка применены.' : 'Изменения применены.') + ' Сохраните в GitHub.');
+        showStatus((linkUrl ? 'Изменения и ссылка применены.' : 'Изменения применены.') + ' Сохраните в GitHub.');
     } else if (editKind === 'image') {
         const imgLinkUrl = $('imgLink').value.trim();
         if (!validLinkUrl(imgLinkUrl)) return showStatus('Недопустимая ссылка (разрешены http, https, tel, mailto, #)', 'error');
@@ -1508,7 +1440,6 @@ function applyEdit() {
 function closePanel() {
     $('editPanel').classList.remove('active');
     editKind = editKey = editImagePath = pendingImg = editOrigText = editOrigImg = null;
-    panelFileData = panelFileNew = panelFileOld = null;
     if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch {} }
     lastFocus = null;
 }
@@ -1526,28 +1457,16 @@ async function saveAll() {
         const imagesWithData = images.filter(k => pending[k].data);
         const imagesWithLinks = images.filter(k => pending[k].linkChanged);
 
-        // 1) Сначала загружаем новые файлы в files/
-        const fileUploads = texts.filter(k => pending[k].fileNew && pending[k].fileData);
-        for (const k of fileUploads) {
-            const p = pending[k];
-            try {
-                const fp = FILES_FOLDER + '/' + p.fileNew;
-                await putFile(fp, p.fileData.split(',')[1], await getSha(fp), `Загрузка файла ${p.fileNew}`);
-            } catch (e) { failed.push(k); }
-        }
-
-        // 2) Потом коммит HTML со ссылками на новые имена
-        const htmlTexts = texts.filter(k => !failed.includes(k) && (pending[k].linkChanged || true));
-        if (htmlTexts.length || imagesWithLinks.length) {
+        if (texts.length || imagesWithLinks.length) {
             const f = await getFile(currentFile);
             const doc = new DOMParser().parseFromString(f.text, 'text/html');
 
-            for (const k of htmlTexts) {
+            for (const k of texts) {
                 const p = pending[k];
                 const el = doc.querySelector(`[data-edit="${CSS.escape(k.slice(2))}"]`);
                 if (!el) { failed.push(k); continue; }
                 el.textContent = keepWs(el.textContent, p.value);
-                if (p.linkChanged) applyLinkToText(doc, el, p.link || '', p.keepColor || false, p.linkColor || 'inherit', p.linkTarget || '_blank', p.fileNew || undefined);
+                if (p.linkChanged) applyLinkToText(doc, el, p.link || '', p.keepColor || false, p.linkColor || 'inherit', p.linkTarget || '_blank');
                 if (!p.link) syncHref(el, p.value);
                 done.push(k);
             }
@@ -1565,17 +1484,6 @@ async function saveAll() {
             repoDeployId = deployId;
         }
 
-        // 3) После коммита удаляем старые файлы (заменённые и отвязанные)
-        for (const k of texts) {
-            if (failed.includes(k)) continue;
-            const p = pending[k];
-            if (p.fileOld && (p.fileNew || p.deleteOld)) {
-                try { await delFile(FILES_FOLDER + '/' + p.fileOld); } catch {}
-            } else if (p.deleteOld && !p.fileNew) {
-                try { await delFile(FILES_FOLDER + '/' + p.deleteOld); } catch {}
-            }
-        }
-
         for (const k of imagesWithData) {
             const { path, data } = pending[k];
             try {
@@ -1585,13 +1493,13 @@ async function saveAll() {
         }
 
         imagesWithLinks.forEach(k => { if (!done.includes(k) && !failed.includes(k)) done.push(k); });
-        fileUploads.forEach(k => { if (!done.includes(k) && !failed.includes(k)) done.push(k); });
 
         done.filter(k => !failed.includes(k)).forEach(k => delete pending[k]);
-        sessionFileNames = [];
         markUnsaved();
-        if (failed.length) showStatus(`Сохранено: ${done.length}. Не сохранено: ${failed.length}.`, 'error');
-        else {
+        if (failed.length) {
+            const successCount = done.filter(k => !failed.includes(k)).length;
+            showStatus(`Сохранено: ${successCount}. Не сохранено: ${failed.length}.`, 'error');
+        } else {
             showStatus('Сохранено! Ждём деплой GitHub Pages...', 'success');
             setDeployBadge('pending', '<i class="fas fa-spinner fa-spin"></i> Деплой...');
             setTimeout(() => { loadSite(true); verifyDeploy(repoDeployId, false); }, 500);
@@ -1614,6 +1522,140 @@ async function resetSite() {
     $('progressLog').style.display = 'none';
     $('errorDetails').innerHTML = '';
 }
+
+/* ═══════════════════════════════════════════════════════ */
+/* ПАНЕЛЬ НАСТРОЕК КАЛЬКУЛЯТОРА                           */
+/* ═══════════════════════════════════════════════════════ */
+let calcConfigData = null;
+let calcConfigSha = null;
+const CALC_CONFIG_PATH = 'calc-config.js';
+
+function parseCalcConfig(text) {
+    try {
+        const fn = new Function(text + '; return typeof CALC_CONFIG !== "undefined" ? CALC_CONFIG : null;');
+        return fn();
+    } catch (e) { return null; }
+}
+
+function serializeCalcConfig(config) {
+    return '// ═══════════════════════════════════════════════════════\n' +
+           '// НАСТРОЙКИ КАЛЬКУЛЯТОРА РЕМОНТА\n' +
+           '// Отредактировано через админку: ' + new Date().toLocaleString('ru-RU') + '\n' +
+           '// Не меняйте структуру (ключи), только значения!\n' +
+           '// ═══════════════════════════════════════════════════════\n\n' +
+           'const CALC_CONFIG = ' + JSON.stringify(config, null, 4) + ';\n';
+}
+
+async function loadCalcConfig() {
+    try {
+        const f = await getFile(CALC_CONFIG_PATH);
+        calcConfigSha = f.sha;
+        calcConfigData = parseCalcConfig(f.text);
+        if (!calcConfigData) throw new Error('Не удалось разобрать структуру файла');
+        renderCalcPanel();
+    } catch (e) {
+        if (e.status === 404) {
+            $('calcPanelBody').innerHTML = '<div class="calc-panel-error">Файл <code>calc-config.js</code> не найден в корне репозитория.<br>Создайте его согласно инструкции.</div>';
+        } else {
+            $('calcPanelBody').innerHTML = '<div class="calc-panel-error">Ошибка загрузки: ' + esc(e.message) + '</div>';
+        }
+    }
+}
+
+function renderCalcPanel() {
+    const c = calcConfigData;
+    let html = '';
+
+    html += '<div class="calc-section"><h3>🔨 Типы ремонта (цена за м²)</h3>';
+    c.types.forEach((t, i) => {
+        html += `<div class="calc-field-row">
+            <label>${esc(t.icon || '')} ${esc(t.name)}</label>
+            <input type="number" data-section="types" data-index="${i}" data-field="price" value="${t.price}">
+        </div>`;
+    });
+    html += '</div>';
+
+    html += '<div class="calc-section"><h3>🧱 Материалы (% к базовой стоимости)</h3>';
+    c.materials.forEach((m, i) => {
+        html += `<div class="calc-field-row">
+            <label>${esc(m.name)}</label>
+            <input type="number" data-section="materials" data-index="${i}" data-field="percent" value="${m.percent}">
+        </div>`;
+    });
+    html += '</div>';
+
+    html += '<div class="calc-section"><h3>⚙️ Дополнительные работы (фиксированная цена)</h3>';
+    c.works.forEach((w, i) => {
+        html += `<div class="calc-field-row">
+            <label>${esc(w.name)}</label>
+            <input type="number" data-section="works" data-index="${i}" data-field="price" value="${w.price}">
+        </div>`;
+    });
+    html += '</div>';
+
+    html += '<div class="calc-section"><h3>🎁 Скидка</h3>';
+    html += `<div class="calc-field-row"><label>Порог срабатывания (₽)</label>
+        <input type="number" data-section="discount" data-field="threshold" value="${c.discount.threshold}"></div>`;
+    html += `<div class="calc-field-row"><label>Размер скидки (%)</label>
+        <input type="number" data-section="discount" data-field="percent" value="${c.discount.percent}"></div>`;
+    html += '</div>';
+
+    html += '<div class="calc-section"><h3>📐 Диапазон площади (м²)</h3>';
+    html += `<div class="calc-field-row"><label>Минимум</label>
+        <input type="number" data-section="area" data-field="min" value="${c.area.min}"></div>`;
+    html += `<div class="calc-field-row"><label>Максимум</label>
+        <input type="number" data-section="area" data-field="max" value="${c.area.max}"></div>`;
+    html += `<div class="calc-field-row"><label>По умолчанию</label>
+        <input type="number" data-section="area" data-field="default" value="${c.area.default}"></div>`;
+    html += '</div>';
+
+    $('calcPanelBody').innerHTML = html;
+
+    $('calcPanelBody').querySelectorAll('input').forEach(inp => {
+        inp.addEventListener('input', e => {
+            const { section, index, field } = e.target.dataset;
+            const val = parseInt(e.target.value) || 0;
+            if (index !== undefined) {
+                calcConfigData[section][parseInt(index)][field] = val;
+            } else {
+                calcConfigData[section][field] = val;
+            }
+        });
+    });
+}
+
+async function saveCalcConfig() {
+    const btn = $('calcPanelSave');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Сохранение...';
+    try {
+        const content = serializeCalcConfig(calcConfigData);
+        await putFile(CALC_CONFIG_PATH, b64e(content), calcConfigSha, 'Обновление цен калькулятора через админку');
+        showStatus('✓ Цены сохранены! Обновятся на сайте через 1-2 минуты.', 'success');
+        closeCalcPanel();
+    } catch (e) {
+        const i = interpretError(e.status, e.body);
+        showStatus('✗ ' + i.title + ': ' + i.fix, 'error');
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Сохранить в GitHub';
+    }
+}
+
+function openCalcPanel() {
+    $('calcPanel').classList.add('active');
+    $('calcPanelBody').innerHTML = '<div class="calc-panel-loading">Загрузка настроек из репозитория...</div>';
+    loadCalcConfig();
+}
+
+function closeCalcPanel() {
+    $('calcPanel').classList.remove('active');
+}
+
+$('calcBtn').addEventListener('click', openCalcPanel);
+$('calcPanelClose').addEventListener('click', closeCalcPanel);
+$('calcPanelCancel').addEventListener('click', closeCalcPanel);
+$('calcPanelSave').addEventListener('click', saveCalcConfig);
 
 $('checkBtn').addEventListener('click', checkToken);
 $('checkBtn2').addEventListener('click', checkToken);
