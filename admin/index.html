@@ -652,14 +652,20 @@ function showEditor() {
 
 function buildPreviewHtml(text) {
     const d = new DOMParser().parseFromString(text, 'text/html');
-    d.querySelectorAll('script, noscript, meta[http-equiv="refresh" i]').forEach(n => n.remove());
-    d.querySelectorAll('*').forEach(el => {
-        Array.from(el.attributes).forEach(a => { if (/^on/i.test(a.name)) el.removeAttribute(a.name); });
-    });
-    d.querySelectorAll('a[href]').forEach(a => {
-        if (/^\s*javascript:/i.test(a.getAttribute('href'))) a.removeAttribute('href');
-    });
+    d.querySelectorAll('meta[http-equiv="refresh" i]').forEach(n => n.remove());
     d.querySelectorAll('base').forEach(b => b.remove());
+    
+    // ИСПРАВЛЕНО: принудительно показываем все блоки, которые появляются при скролле
+    // В iframe IntersectionObserver не срабатывает — блоки остаются невидимыми
+    const fixStyle = d.createElement('style');
+    fixStyle.textContent = `
+        .animate-on-scroll { opacity: 1 !important; transform: none !important; }
+        .fade-in, .fade-in-up, .fade-in-down { opacity: 1 !important; transform: none !important; }
+        [data-aos], [data-scroll], [data-scroll-reveal] { opacity: 1 !important; transform: none !important; }
+        .hidden-on-load, .invisible { opacity: 1 !important; visibility: visible !important; }
+    `;
+    d.head.appendChild(fixStyle);
+    
     const base = d.createElement('base');
     base.setAttribute('href', pageUrl().href);
     d.head.insertBefore(base, d.head.firstChild);
