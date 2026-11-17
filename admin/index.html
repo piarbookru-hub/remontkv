@@ -969,10 +969,22 @@ function hookIframe() {
         const linkEl = ev.target.closest && ev.target.closest('a[href]');
         if (linkEl) ev.preventDefault();
     }, true);
-    d.addEventListener('keydown', ev => { if (ev.key === 'Escape') closePanel(); });
+
+    // ИСПРАВЛЕНО: режим перехвата (третий параметр = true)
+    // Событие обрабатывается ДО скриптов сайта, которые могут его перехватить
+    d.addEventListener('keydown', ev => {
+        if (ev.key !== 'Escape') return;
+        if ($('calcPanel').classList.contains('active')) { closeCalcPanel(); return; }
+        if ($('editPanel').classList.contains('active')) { closePanel(); }
+    }, true);
 }
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('editPanel').classList.contains('active')) closePanel(); });
+// ИСПРАВЛЕНО: глобальный обработчик закрывает и панель калькулятора тоже
+document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if ($('calcPanel').classList.contains('active')) { closeCalcPanel(); return; }
+    if ($('editPanel').classList.contains('active')) { closePanel(); }
+});
 
 function syncHref(el, newValue) {
     const link = el.closest('a[href]');
