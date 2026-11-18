@@ -375,6 +375,15 @@
         .calc-check-item.active .calc-check-box { background: var(--accent); border-color: var(--accent); }
         .calc-check-box::after { content: '✓'; color: var(--bg-dark); font-size: 10px; font-weight: 700; opacity: 0; transition: opacity 0.2s; }
         .calc-check-item.active .calc-check-box::after { opacity: 1; }
+
+        /* Радио-кнопки для материалов (выбор только одного) */
+        .calc-radio-item { display: flex; align-items: flex-start; gap: 7px; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 9px 10px; cursor: pointer; transition: all 0.2s; user-select: none; min-width: 0; }
+        .calc-radio-item:hover { border-color: #444; }
+        .calc-radio-item.active { border-color: var(--accent); background: rgba(196, 154, 108, 0.08); }
+        .calc-radio-box { width: 15px; height: 15px; border: 2px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; margin-top: 1px; }
+        .calc-radio-item.active .calc-radio-box { border-color: var(--accent); }
+        .calc-radio-box::after { content: ''; width: 7px; height: 7px; background: var(--accent); border-radius: 50%; opacity: 0; transition: opacity 0.2s; }
+        .calc-radio-item.active .calc-radio-box::after { opacity: 1; }
         .calc-check-text { flex: 1; font-size: 11px; overflow-wrap: break-word; min-width: 0; line-height: 1.3; }
         .calc-check-price { font-size: 10px; color: #aaa; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
 
@@ -1112,14 +1121,15 @@
             
             function renderMaterials() {
                 const grid = $c('calcMaterialsGrid');
-                grid.innerHTML = CFG.materials.map(m => `
-                    <div class="calc-check-item ${m.checked ? 'active' : ''}" data-percent="${m.percent}" data-id="${m.id}">
-                        <div class="calc-check-box"></div>
+                const defaultMat = CFG.materials.find(m => m.checked) || CFG.materials[0];
+                grid.innerHTML = CFG.materials.map((m, i) => `
+                    <div class="calc-radio-item ${m === defaultMat ? 'active' : ''}" data-percent="${m.percent}" data-id="${m.id || i}">
+                        <div class="calc-radio-box"></div>
                         <div class="calc-check-text">${m.name}</div>
                         <div class="calc-check-price">+${m.percent}%</div>
                     </div>
                 `).join('');
-                state.materials = CFG.materials.filter(m => m.checked).map(m => m.percent);
+                state.materials = defaultMat ? [defaultMat.percent] : [];
             }
             
             function renderWorks() {
@@ -1217,11 +1227,11 @@
             });
             
             $c('calcMaterialsGrid').addEventListener('click', e => {
-                const item = e.target.closest('.calc-check-item');
+                const item = e.target.closest('.calc-radio-item');
                 if (!item) return;
-                item.classList.toggle('active');
-                state.materials = Array.from($c('calcMaterialsGrid').querySelectorAll('.calc-check-item.active'))
-                    .map(el => parseInt(el.dataset.percent));
+                $c('calcMaterialsGrid').querySelectorAll('.calc-radio-item').forEach(el => el.classList.remove('active'));
+                item.classList.add('active');
+                state.materials = [parseInt(item.dataset.percent)];
                 calculateCalc();
             });
             
