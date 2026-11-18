@@ -12,7 +12,6 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #fff; min-height: 100vh; min-height: 100dvh; overflow: hidden; }
-
 .login-screen { display: flex; align-items: center; justify-content: center; height: 100vh; height: 100dvh; padding: 20px; overflow-y: auto; }
 .login-card { background: #1a1a1a; border-radius: 16px; padding: 40px; max-width: 480px; width: 100%; border: 1px solid #2a2a2a; margin: auto; }
 .login-card h1 { font-size: 24px; margin-bottom: 8px; }
@@ -30,10 +29,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
 .help-link { color: #F40009; font-size: 13px; text-decoration: none; display: inline-block; margin-top: 12px; }
 .error-msg { color: #ff4444; font-size: 13px; margin-top: 8px; display: none; background: rgba(255, 68, 68, .1); padding: 10px; border-radius: 6px; border: 1px solid rgba(255, 68, 68, .3); }
 .error-msg.show { display: block; }
-
 .editor-app { display: none; flex-direction: column; height: 100vh; height: 100dvh; overflow: hidden; }
 .editor-app.active { display: flex; }
-
 .editor-toolbar { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; padding: 12px 20px; display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; z-index: 100; }
 .toolbar-row { display: flex; justify-content: flex-start; align-items: center; gap: 8px; flex-wrap: wrap; }
 .app-title { font-size: 16px; font-weight: 600; display: flex; align-items: center; flex-wrap: wrap; row-gap: 6px; }
@@ -47,19 +44,16 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
 .toolbar-btn:disabled { opacity: .5; cursor: not-allowed; }
 .unsaved-badge { background: #F40009; color: #fff; padding: 3px 8px; border-radius: 10px; font-size: 11px; margin-left: 0; display: none; white-space: nowrap; }
 .unsaved-badge.show { display: inline-block; }
-
 .deploy-badge { display: none; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-family: 'Courier New', monospace; cursor: pointer; border: 1px solid #333; background: #0f0f0f; color: #888; margin-left: 0; transition: all .2s; user-select: none; }
 .deploy-badge:hover { border-color: #666; }
 .deploy-badge.live { color: #00cc66; border-color: rgba(0, 204, 102, .45); background: rgba(0, 204, 102, .08); }
 .deploy-badge.pending { color: #fbbf24; border-color: rgba(251, 191, 36, .45); background: rgba(251, 191, 36, .08); }
 .deploy-badge.error { color: #ff4444; border-color: rgba(255, 68, 68, .45); background: rgba(255, 68, 68, .08); }
 .deploy-badge.unknown { color: #888; }
-
 .page-indicator { display: inline-flex; align-items: center; gap: 6px; background: #0f0f0f; border: 1px solid #333; padding: 7px 12px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 12px; color: #c9a961; margin-left: 0; max-width: 320px; overflow: hidden; }
 .page-indicator i { color: #F40009; font-size: 11px; flex-shrink: 0; }
 #currentPageIndicator { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .page-indicator.viewmode { color: #888; border-color: #555; }
-
 .iframe-wrapper { flex: 1; position: relative; background: #fff; overflow: hidden; }
 .site-iframe { width: 100%; height: 100%; border: none; display: block; }
 .iframe-loader { position: absolute; inset: 0; background: #0f0f0f; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 50; transition: opacity .3s; }
@@ -68,7 +62,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
 .loader-text { color: #888; font-size: 14px; }
 .loader-status { color: #F40009; font-size: 12px; margin-top: 6px; font-family: 'Courier New', monospace; }
 @keyframes spin { to { transform: rotate(360deg); } }
-
 .setup-screen { display: none; align-items: center; justify-content: center; flex: 1; padding: 20px; background: #0f0f0f; overflow-y: auto; }
 .setup-screen.active { display: flex; }
 .setup-card { background: #1a1a1a; border-radius: 16px; padding: 40px; max-width: 600px; width: 100%; border: 1px solid #2a2a2a; text-align: center; margin: auto; }
@@ -76,23 +69,19 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
 .setup-card h2 { font-size: 20px; margin-bottom: 12px; }
 .setup-card p { color: #888; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
 .setup-card strong { color: #fff; }
-
 .token-check-box { background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 10px; padding: 16px; margin-bottom: 20px; text-align: left; }
 .token-check-box h3 { font-size: 14px; margin-bottom: 10px; color: #F40009; }
 .token-info { font-family: 'Courier New', monospace; font-size: 12px; color: #aaa; background: #000; padding: 10px; border-radius: 6px; word-break: break-all; margin-top: 8px; }
 .token-info .label { color: #888; display: block; margin-bottom: 4px; }
-
 .error-details { background: rgba(255, 68, 68, .1); border: 1px solid rgba(255, 68, 68, .3); border-radius: 8px; padding: 16px; margin-top: 16px; text-align: left; font-family: 'Courier New', monospace; font-size: 13px; color: #ff4444; word-break: break-word; }
 .err-title { font-weight: 700; color: #fff; margin-bottom: 8px; font-family: 'Inter', sans-serif; font-size: 14px; }
 .err-status { color: #F40009; font-weight: 600; margin-bottom: 6px; }
 .err-fix { color: #00cc66; margin-top: 10px; font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; }
-
 .progress-log { text-align: left; background: #0f0f0f; border-radius: 8px; padding: 16px; margin-top: 20px; max-height: 250px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 13px; }
 .log-item { padding: 4px 0; color: #888; }
 .log-item.done { color: #00cc66; }
 .log-item.error { color: #ff4444; }
 .log-item.working { color: #F40009; }
-
 .edit-panel { position: fixed; bottom: 0; left: 0; right: 0; background: #1a1a1a; border-top: 2px solid #F40009; transform: translateY(100%); visibility: hidden; transition: transform .3s, visibility .3s; z-index: 1000; box-shadow: 0 -10px 40px rgba(0, 0, 0, .5); max-height: 75vh; display: flex; flex-direction: column; }
 .edit-panel.active { transform: translateY(0); visibility: visible; }
 .edit-panel-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px 12px; flex-shrink: 0; }
@@ -103,12 +92,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
 .edit-panel-body { overflow-y: auto; padding: 0 20px 12px; flex: 1; min-height: 0; }
 .edit-panel textarea { width: 100%; min-height: 90px; padding: 12px; background: #0f0f0f; border: 1px solid #333; border-radius: 8px; color: #fff; font: inherit; font-size: 14px; resize: vertical; }
 .edit-panel-actions { display: flex; gap: 10px; justify-content: flex-end; padding: 12px 20px 16px; border-top: 1px solid #2a2a2a; flex-shrink: 0; }
-
 .link-section { margin-top: 12px; padding-top: 12px; border-top: 1px solid #2a2a2a; }
 .link-section label.field-label { display: block; font-size: 12px; color: #aaa; margin-bottom: 6px; font-weight: 500; }
 .link-section input[type="url"] { width: 100%; padding: 10px 12px; background: #0f0f0f; border: 1px solid #333; border-radius: 6px; color: #fff; font: inherit; font-size: 13px; }
 .link-hint { font-size: 11px; color: #666; margin-top: 6px; }
-
 .link-option { margin-top: 12px; }
 .link-option > .field-label { margin-bottom: 8px; display: block; font-size: 12px; color: #aaa; font-weight: 500; }
 .option-group { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -116,34 +103,28 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
 .radio-label:hover { border-color: #666; }
 .radio-label input[type="radio"] { accent-color: #F40009; cursor: pointer; margin: 0; }
 .radio-label:has(input:checked) { border-color: #F40009; background: rgba(244, 0, 9, .08); }
-
 .color-preview { display: inline-block; padding: 2px 6px; border-radius: 3px; font-weight: 500; }
 .color-preview.inherit { color: #fff; background: #2a2a2a; }
 .color-preview.brown { color: #fff; background: #8B4513; }
 .color-preview.lightbrown { color: #fff; background: #CD853F; }
 .target-label { color: #ccc; }
-
 .file-upload { position: relative; display: flex; align-items: center; gap: 12px; padding: 16px; background: #0f0f0f; border: 2px dashed #333; border-radius: 8px; cursor: pointer; transition: border-color .2s; }
 .file-upload:hover, .file-upload:focus-within { border-color: #F40009; }
 .file-upload i { font-size: 24px; color: #F40009; }
 .upload-text { flex: 1; font-size: 14px; color: #aaa; }
 .file-upload input[type=file] { position: absolute; opacity: 0; width: 1px; height: 1px; }
-
 .status-bar { position: fixed; top: 60px; right: 24px; background: #1a1a1a; padding: 12px 18px; border-radius: 8px; border: 1px solid #2a2a2a; font-size: 14px; display: none; z-index: 2000; max-width: 420px; }
 .status-bar.show { display: block; animation: slideIn .3s ease-out; }
 .status-bar.success { border-color: #00cc66; color: #00cc66; }
 .status-bar.error { border-color: #ff4444; color: #ff4444; }
 .status-bar.info { border-color: #888; color: #ddd; }
 @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-
 .hint-banner { background: rgba(244, 0, 9, .1); border-bottom: 1px solid rgba(244, 0, 9, .3); padding: 8px 20px; font-size: 13px; color: #aaa; text-align: center; }
 .hint-banner strong { color: #F40009; }
 .hint-banner i { color: #F40009; margin-right: 6px; }
-
 .btn-group { display: flex; gap: 10px; margin-top: 16px; }
 .btn-group .btn { flex: 1; }
 .btn-small { width: auto; padding: 10px 16px; font-size: 13px; }
-
 .calc-panel { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px; }
 .calc-panel.active { display: flex; }
 .calc-panel-inner { background: #1a1a1a; border-radius: 12px; width: 100%; max-width: 700px; max-height: 90vh; display: flex; flex-direction: column; border: 1px solid #2a2a2a; }
@@ -159,12 +140,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
 .calc-field-row input:focus { outline: none; border-color: #F40009; }
 .calc-panel-loading { text-align: center; padding: 40px; color: #888; }
 .calc-panel-error { color: #ff4444; padding: 20px; background: rgba(255,68,68,0.1); border-radius: 8px; }
-
 @media (prefers-reduced-motion: reduce) { .status-bar.show { animation: none; } .edit-panel, .btn, .toolbar-btn { transition: none; } }
 </style>
 </head>
 <body>
-
 <div class="login-screen" id="loginScreen">
     <div class="login-card">
         <h1><i class="fas fa-lock" style="color: #F40009;"></i> Вход в админ-панель</h1>
@@ -180,7 +159,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
         </a>
     </div>
 </div>
-
 <div class="editor-app" id="editorApp">
     <div class="editor-toolbar">
         <div class="toolbar-row toolbar-row-top">
@@ -207,11 +185,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
             </div>
         </div>
     </div>
-
     <div class="hint-banner" id="hintBanner">
         <i class="fas fa-lightbulb"></i> Клик по <strong>тексту/фото</strong> — редактирование. <strong>Alt+клик</strong> по ссылке — открыть страницу в админке. <strong>Ctrl+клик</strong> — новая вкладка. <strong>Esc</strong> — закрыть панель.
     </div>
-
     <div class="setup-screen" id="setupScreen">
         <div class="setup-card">
             <div class="setup-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
@@ -227,17 +203,15 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
             <div class="progress-log" id="progressLog" style="display: none;"></div>
         </div>
     </div>
-
     <div class="iframe-wrapper" id="iframeWrapper" style="display: none;">
         <div class="iframe-loader" id="iframeLoader">
             <div class="spinner"></div>
             <div class="loader-text">Загрузка страницы...</div>
             <div class="loader-status" id="loaderStatus">Инициализация</div>
         </div>
-        <iframe id="siteIframe" class="site-iframe" title="Превью сайта"></iframe>
+        <iframe id="siteIframe" class="site-iframe" title="Превью сайта" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe>
     </div>
 </div>
-
 <div class="edit-panel" id="editPanel" role="dialog" aria-modal="true" aria-label="Редактирование">
     <div class="edit-panel-header">
         <h3><span id="editTitle">Редактирование</span><span class="key-badge" id="editKey"></span></h3>
@@ -249,7 +223,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
         <button class="toolbar-btn primary" id="applyBtn">Применить</button>
     </div>
 </div>
-
 <div class="calc-panel" id="calcPanel">
     <div class="calc-panel-inner">
         <div class="calc-panel-header">
@@ -265,30 +238,18 @@ button:focus-visible, a:focus-visible { outline: 2px solid #F40009; outline-offs
         </div>
     </div>
 </div>
-
 <div class="status-bar" id="statusBar" role="status" aria-live="polite"></div>
-
 <script>
 'use strict';
-
 if (typeof CMS_CONFIG === 'undefined') {
     document.body.innerHTML = '<p style="padding:40px;color:#ff4444;">Не найден config.js (CMS_CONFIG). Проверьте, что файл лежит рядом с этой страницей.</p>';
     throw new Error('CMS_CONFIG is not defined');
 }
-
 const LINK_COLORS = { inherit: null, brown: '#8B4513', lightbrown: '#CD853F' };
 const XHTML_NS = 'http://www.w3.org/1999/xhtml';
-
-// previewScripts: true (или не задан) → скрипты сайта работают в превью.
-// previewScripts: false → скрипты вырезаются из HTML, консоль чистая.
-const PREVIEW_SCRIPTS = CMS_CONFIG.previewScripts !== false;
-const PREVIEW_SANDBOX = PREVIEW_SCRIPTS
-    ? 'allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox'
-    : 'allow-same-origin allow-popups allow-popups-to-escape-sandbox';
+const PREVIEW_SANDBOX = 'allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox';
 const VIEW_SANDBOX = 'allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox';
-
 const $ = id => document.getElementById(id);
-
 const mkStore = st => ({
     get: k => { try { return st.getItem(k); } catch { return null; } },
     set: (k, v) => { try { st.setItem(k, v); } catch {} },
@@ -297,9 +258,8 @@ const mkStore = st => ({
 let ls, ss;
 try { ls = mkStore(localStorage); } catch { ls = { get: () => null, set() {}, del() {} }; }
 try { ss = mkStore(sessionStorage); } catch { ss = { get: () => null, set() {}, del() {} }; }
-
-// Токен в localStorage: не нужно вводить заново после закрытия вкладки.
-let token = ls.get('gh_token');
+ls.del('gh_token');
+let token = ss.get('gh_token');
 let pending = {};
 let editKind = null, editKey = null, editImagePath = null, pendingImg = null, statusTimer = null, lastFocus = null;
 let editOrigText = null, editOrigImg = null;
@@ -309,13 +269,10 @@ let siteBaseUrl = '';
 let siteBasePath = '/';
 let repoDeployId = null;
 let deployPollGen = 0;
-const API = 'https://api.github.com/repos/' + CMS_CONFIG.owner + '/' + CMS_CONFIG.repo;
-
+const API = `https://api.github.com/repos/${CMS_CONFIG.owner}/${CMS_CONFIG.repo}`;
 $('projectNameHeader').textContent = CMS_CONFIG.projectName || 'Редактор';
-$('repoNameHeader').textContent = '· ' + CMS_CONFIG.owner + '/' + CMS_CONFIG.repo;
-
+$('repoNameHeader').textContent = `· ${CMS_CONFIG.owner}/${CMS_CONFIG.repo}`;
 function saveCurrentFile() { ls.set('cms_currentFile', currentFile); }
-
 try {
     const loc = window.location;
     const pathParts = loc.pathname.split('/').filter(Boolean);
@@ -333,16 +290,12 @@ try {
     siteBaseUrl = window.location.origin + '/';
     siteBasePath = '/';
 }
-
 function siteBasePathNoSlash() {
     return siteBasePath.replace(/\/+$/, '');
 }
-
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const encPath = p => p.split('/').map(encodeURIComponent).join('/');
-
 function pageUrl(file = currentFile) { return new URL(encPath(file), siteBaseUrl); }
-
 function safeAbs(href) {
     try {
         const u = new URL(href, pageUrl());
@@ -355,7 +308,6 @@ function validLinkUrl(u) {
     if (u.startsWith('#')) return true;
     return !!safeAbs(u);
 }
-
 function isAdminSelf(file) {
     try {
         const norm = p => p.replace(/index\.html?$/i, '').replace(/\/+$/, '');
@@ -363,7 +315,6 @@ function isAdminSelf(file) {
         return u.origin === window.location.origin && norm(u.pathname) === norm(window.location.pathname);
     } catch { return false; }
 }
-
 function resolveRepoPath(src) {
     try {
         const dirUrl = new URL(encPath(currentFile), 'https://repo.local/');
@@ -374,7 +325,6 @@ function resolveRepoPath(src) {
         return p || null;
     } catch { return null; }
 }
-
 function updatePageIndicator() {
     const el = $('currentPageIndicator');
     const box = $('pageIndicatorBox');
@@ -387,16 +337,13 @@ function updatePageIndicator() {
         if (box) { box.classList.remove('viewmode'); box.title = 'Текущая страница (сохраняется при F5)'; }
     }
 }
-
 function newDeployId() { return 'd' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
-
 function readDeployId(html) {
     const m = html.match(/<meta\s+name=["']cms-deploy-id["']\s+content=["']([^"']+)["']/i);
     return m ? m[1] : null;
 }
-
 function stampDeployId(html, id) {
-    const tag = '<meta name="cms-deploy-id" content="' + id + '">';
+    const tag = `<meta name="cms-deploy-id" content="${id}">`;
     if (/<meta\s+name=["']cms-deploy-id["']/i.test(html)) {
         return html.replace(/<meta\s+name=["']cms-deploy-id["'][^>]*>/i, tag);
     }
@@ -404,7 +351,6 @@ function stampDeployId(html, id) {
     if (/<head(\s[^>]*)?>/.test(html)) return html.replace(/<head(\s[^>]*)?>/i, m => m + '\n' + tag);
     return html.replace(/^(<!DOCTYPE[^>]*>\s*)?/i, m => m + tag + '\n');
 }
-
 function setDeployBadge(state, html) {
     const b = $('deployBadge');
     if (!b) return;
@@ -413,7 +359,6 @@ function setDeployBadge(state, html) {
     b.style.display = 'inline-flex';
     b.innerHTML = html;
 }
-
 async function fetchLiveDeployId() {
     const u = pageUrl();
     u.searchParams.set('cb', Date.now());
@@ -421,7 +366,6 @@ async function fetchLiveDeployId() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     return readDeployId(await res.text());
 }
-
 async function verifyDeploy(expectedId, singleCheck) {
     const gen = ++deployPollGen;
     if (!expectedId) { setDeployBadge('unknown', '<i class="fas fa-info-circle"></i> Нет метки'); return; }
@@ -449,7 +393,6 @@ async function verifyDeploy(expectedId, singleCheck) {
         setDeployBadge('unknown', '<i class="fas fa-question-circle"></i> Не проверить');
     }
 }
-
 const b64d = b => {
     try { return new TextDecoder().decode(Uint8Array.from(atob(b), c => c.charCodeAt(0))); }
     catch (e) { return atob(b); }
@@ -457,11 +400,10 @@ const b64d = b => {
 const b64e = s => {
     const bytes = new TextEncoder().encode(s);
     let result = '';
-    for (let i = 0; i < bytes.length; i += 8192) result += String.fromCharCode.apply(null, bytes.subarray(i, i + 8192));
+    for (let i = 0; i < bytes.length; i += 8192) result += String.fromCharCode(...bytes.subarray(i, i + 8192));
     return btoa(result);
 };
 const keepWs = (old, nv) => old.match(/^\s*/)[0] + nv.trim() + old.match(/\s*$/)[0];
-
 function showStatus(msg, type = 'success') {
     const bar = $('statusBar');
     clearTimeout(statusTimer);
@@ -469,9 +411,7 @@ function showStatus(msg, type = 'success') {
     bar.className = 'status-bar show ' + type;
     statusTimer = setTimeout(() => bar.classList.remove('show'), 4500);
 }
-
 function markUnsaved() { $('unsavedBadge').classList.toggle('show', Object.keys(pending).length > 0); }
-
 async function gh(url, opts = {}) {
     const res = await fetch(url, {
         ...opts, cache: 'no-store',
@@ -481,35 +421,31 @@ async function gh(url, opts = {}) {
         const raw = await res.text();
         let msg = raw;
         try { msg = (JSON.parse(raw)).message || raw; } catch {}
-        const err = new Error('HTTP ' + res.status + ': ' + msg);
+        const err = new Error(`HTTP ${res.status}: ${msg}`);
         err.status = res.status; err.body = msg;
         throw err;
     }
     return res;
 }
-
 async function getFile(path) {
-    const url = API + '/contents/' + encPath(path) + '?ref=' + encodeURIComponent(CMS_CONFIG.branch);
+    const url = `${API}/contents/${encPath(path)}?ref=${encodeURIComponent(CMS_CONFIG.branch)}`;
     const d = await (await gh(url)).json();
     let text;
     if (d.encoding === 'base64' && d.content) text = b64d(d.content);
     else text = await (await gh(url, { headers: { 'Accept': 'application/vnd.github.raw+json' } })).text();
     return { text, sha: d.sha };
 }
-
 async function getSha(path) {
-    try { return (await (await gh(API + '/contents/' + encPath(path) + '?ref=' + encodeURIComponent(CMS_CONFIG.branch))).json()).sha; }
+    try { return (await (await gh(`${API}/contents/${encPath(path)}?ref=${encodeURIComponent(CMS_CONFIG.branch)}`)).json()).sha; }
     catch (e) { if (e.status === 404) return null; throw e; }
 }
-
 async function putFile(path, b64, sha, message) {
-    const body = { message: message || 'Обновление ' + path, content: b64, branch: CMS_CONFIG.branch };
+    const body = { message: message || `Обновление ${path}`, content: b64, branch: CMS_CONFIG.branch };
     if (sha) body.sha = sha;
-    return (await gh(API + '/contents/' + encPath(path), {
+    return (await gh(`${API}/contents/${encPath(path)}`, {
         method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
     })).json();
 }
-
 function interpretError(status, body = '') {
     const b = String(body);
     if (status === 401) return { title: 'Токен недействителен или истёк', fix: 'Создайте новый токен и войдите заново.' };
@@ -518,21 +454,19 @@ function interpretError(status, body = '') {
         if (/scope|permission|not accessible/i.test(b)) return { title: 'У токена нет нужных прав', fix: 'Создайте НОВЫЙ токен с правами Contents: Read and write на этот репозиторий.' };
         return { title: 'Доступ запрещён', fix: 'Проверьте, что токен выдан на этот репозиторий и имеет право записи.' };
     }
-    if (status === 404) return { title: 'Репозиторий или файл не найден', fix: 'Проверьте имя файла и ветку "' + CMS_CONFIG.branch + '".' };
+    if (status === 404) return { title: 'Репозиторий или файл не найден', fix: `Проверьте имя файла и ветку "${CMS_CONFIG.branch}".` };
     if (status === 409) return { title: 'Конфликт версий (файл был изменён)', fix: 'Кто-то изменил файл в репозитории. Нажмите "Обновить" и примените правки заново.' };
     if (status === 422) return { title: 'Ошибка валидации', fix: 'Файл уже существует или данные некорректны. Попробуйте "Переподготовить".' };
     return { title: 'Ошибка запроса', fix: 'Проверьте интернет-соединение и повторите. Если не помогает — создайте новый токен.' };
 }
-
 function showErrorDetails(title, status, body, fix) {
-    $('errorDetails').innerHTML = '<div class="error-details">' +
-        '<div class="err-title"><i class="fas fa-exclamation-triangle" style="color: #ff4444;"></i> ' + esc(title) + '</div>' +
-        '<div class="err-status">Код: ' + esc(status) + '</div>' +
-        '<div style="color: #888; font-size: 12px; margin-bottom: 8px;">' + esc(body) + '</div>' +
-        '<div class="err-fix"><i class="fas fa-check-circle"></i> ' + esc(fix) + '</div>' +
-    '</div>';
+    $('errorDetails').innerHTML = `<div class="error-details">
+        <div class="err-title"><i class="fas fa-exclamation-triangle" style="color: #ff4444;"></i> ${esc(title)}</div>
+        <div class="err-status">Код: ${esc(status)}</div>
+        <div style="color: #888; font-size: 12px; margin-bottom: 8px;">${esc(body)}</div>
+        <div class="err-fix"><i class="fas fa-check-circle"></i> ${esc(fix)}</div>
+    </div>`;
 }
-
 async function checkToken() {
     const box = $('tokenInfo');
     box.textContent = 'Проверка токена...';
@@ -541,27 +475,27 @@ async function checkToken() {
         const user = await (await gh('https://api.github.com/user')).json();
         const repo = await (await gh(API)).json();
         let hasIndex = true;
-        try { await gh(API + '/contents/index.html?ref=' + encodeURIComponent(CMS_CONFIG.branch)); } catch { hasIndex = false; }
+        try { await gh(`${API}/contents/index.html?ref=${encodeURIComponent(CMS_CONFIG.branch)}`); } catch { hasIndex = false; }
         const canPush = repo.permissions ? !!repo.permissions.push : null;
-        box.innerHTML =
-            '<div class="token-info"><span class="label"><i class="fas fa-check-circle" style="color: #00cc66;"></i> Пользователь:</span> ' + esc(user.login) + '</div>' +
-            '<div class="token-info" style="margin-top: 8px;"><span class="label"><i class="fas fa-check-circle" style="color: #00cc66;"></i> Репозиторий:</span> ' + esc(repo.full_name) + ' (' + (repo.private ? 'приватный' : 'публичный') + ')</div>' +
-            '<div class="token-info" style="margin-top: 8px;"><span class="label"><i class="fas fa-' + (canPush === false ? 'times' : 'check') + '-circle" style="color: ' + (canPush === false ? '#ff4444' : '#00cc66') + ';"></i> Запись в репозиторий:</span> ' + (canPush === null ? 'нет данных' : canPush ? 'есть' : 'НЕТ — сохранение не удастся') + '</div>' +
-            '<div class="token-info" style="margin-top: 8px;"><span class="label"><i class="fas fa-' + (hasIndex ? 'check' : 'exclamation') + '-circle" style="color: ' + (hasIndex ? '#00cc66' : '#ff9900') + ';"></i> index.html в ветке ' + esc(CMS_CONFIG.branch) + ':</span> ' + (hasIndex ? 'найден' : 'НЕ НАЙДЕН') + '</div>';
+        box.innerHTML = `
+            <div class="token-info"><span class="label"><i class="fas fa-check-circle" style="color: #00cc66;"></i> Пользователь:</span> ${esc(user.login)}</div>
+            <div class="token-info" style="margin-top: 8px;"><span class="label"><i class="fas fa-check-circle" style="color: #00cc66;"></i> Репозиторий:</span> ${esc(repo.full_name)} (${repo.private ? 'приватный' : 'публичный'})</div>
+            <div class="token-info" style="margin-top: 8px;"><span class="label"><i class="fas fa-${canPush === false ? 'times-circle' : 'check-circle'}" style="color: ${canPush === false ? '#ff4444' : '#00cc66'};"></i> Запись в репозиторий:</span> ${canPush === null ? 'нет данных' : canPush ? 'есть' : 'НЕТ — сохранение не удастся'}</div>
+            <div class="token-info" style="margin-top: 8px;"><span class="label"><i class="fas fa-${hasIndex ? 'check-circle' : 'exclamation-circle'}" style="color: ${hasIndex ? '#00cc66' : '#ff9900'};"></i> index.html в ветке ${esc(CMS_CONFIG.branch)}:</span> ${hasIndex ? 'найден' : 'НЕ НАЙДЕН'}</div>
+        `;
         if (canPush === false) showErrorDetails('Нет прав записи', 'WARNING', '', 'Выдайте токену право Contents: Read and write на этот репозиторий.');
-        else if (!hasIndex) showErrorDetails('Файл index.html не найден', '404', 'Ветка "' + CMS_CONFIG.branch + '" или файл не существует', 'Создайте index.html в корне репозитория или проверьте ветку в config.js.');
+        else if (!hasIndex) showErrorDetails('Файл index.html не найден', '404', `Ветка "${CMS_CONFIG.branch}" или файл не существует`, 'Создайте index.html в корне репозитория или проверьте ветку в config.js.');
         const ok = hasIndex && canPush !== false;
         showStatus(ok ? 'Токен валиден' : 'Есть проблемы — см. подробности', ok ? 'success' : 'error');
         return ok;
     } catch (e) {
         const i = interpretError(e.status, e.body);
-        box.innerHTML = '<div class="token-info"><span class="label"><i class="fas fa-times-circle" style="color: #ff4444;"></i> Ошибка:</span> ' + esc(e.message) + '</div>';
+        box.innerHTML = `<div class="token-info"><span class="label"><i class="fas fa-times-circle" style="color: #ff4444;"></i> Ошибка:</span> ${esc(e.message)}</div>`;
         showErrorDetails(i.title, e.status || 'сеть', e.body || e.message, i.fix);
         showStatus('✗ ' + i.title, 'error');
         return false;
     }
 }
-
 async function login() {
     const t = $('tokenInput').value.trim();
     if (!t) return;
@@ -570,20 +504,18 @@ async function login() {
     token = t;
     try {
         await gh('https://api.github.com/user');
-        ls.set('gh_token', t);
+        ss.set('gh_token', t);
         enterApp();
     } catch (e) {
         token = null;
         const i = interpretError(e.status, e.body);
-        $('loginError').innerHTML = '<strong>' + esc(i.title) + '</strong><br><small>' + esc(i.fix) + '</small>';
+        $('loginError').innerHTML = `<strong>${esc(i.title)}</strong><br><small>${esc(i.fix)}</small>`;
         $('loginError').classList.add('show');
         btn.disabled = false; btn.textContent = 'Войти';
     }
 }
-
 $('loginBtn').addEventListener('click', login);
 $('tokenInput').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
-
 async function enterApp() {
     $('loginScreen').style.display = 'none';
     $('editorApp').classList.add('active');
@@ -593,7 +525,7 @@ async function enterApp() {
         try { f = await getFile(currentFile); }
         catch (e) {
             if (e.status === 404 && currentFile !== 'index.html') {
-                showStatus('⚠ Файл "' + currentFile + '" не найден — переключаемся на index.html', 'info');
+                showStatus(`⚠ Файл "${currentFile}" не найден — переключаемся на index.html`, 'info');
                 currentFile = 'index.html'; saveCurrentFile(); updatePageIndicator();
                 f = await getFile(currentFile);
             } else throw e;
@@ -609,22 +541,19 @@ async function enterApp() {
         } else { showSetup(); await checkToken(); }
     } catch (e) {
         showSetup();
-        if (e.status === 404) showErrorDetails('Файл не найден', 404, 'В репозитории ' + CMS_CONFIG.owner + '/' + CMS_CONFIG.repo + ' ветка ' + CMS_CONFIG.branch, 'Проверьте имя файла.');
+        if (e.status === 404) showErrorDetails('Файл не найден', 404, `В репозитории ${CMS_CONFIG.owner}/${CMS_CONFIG.repo} ветка ${CMS_CONFIG.branch}`, 'Проверьте имя файла.');
         else if (e.status === 401 || e.status === 403) await checkToken();
         else { const i = interpretError(e.status, e.body); showErrorDetails(i.title, e.status || 'unknown', e.body || e.message, i.fix); }
     }
 }
-
 if (token) enterApp();
-
 function logout() {
     if (Object.keys(pending).length && !confirm('Есть несохранённые изменения. Выйти?')) return;
-    ls.del('gh_token');
+    ss.del('gh_token');
     ls.del('cms_currentFile');
     pending = {};
     location.reload();
 }
-
 function showSetup() {
     $('setupScreen').classList.add('active');
     $('iframeWrapper').style.display = 'none';
@@ -633,42 +562,29 @@ function showSetup() {
     $('prepareBtn').innerHTML = '<i class="fas fa-download"></i> Подготовить страницу';
     $('setupTitle').textContent = 'Подготовка ' + currentFile;
 }
-
 function showEditor() {
     $('setupScreen').classList.remove('active');
     $('iframeWrapper').style.display = 'block';
     $('hintBanner').style.display = 'block';
     loadSite();
 }
-
 function buildPreviewHtml(text) {
     const d = new DOMParser().parseFromString(text, 'text/html');
     d.querySelectorAll('meta[http-equiv="refresh" i]').forEach(n => n.remove());
     d.querySelectorAll('base').forEach(b => b.remove());
-    // Если previewScripts: false — вырезаем скрипты и inline-обработчики,
-    // чтобы в консоли не было спама «Blocked script execution».
-    if (!PREVIEW_SCRIPTS) {
-        d.querySelectorAll('script, noscript').forEach(n => n.remove());
-        d.querySelectorAll('*').forEach(el => {
-            for (const a of Array.from(el.attributes)) {
-                if (/^on/i.test(a.name)) el.removeAttribute(a.name);
-                if (/^javascript:/i.test(a.value)) el.removeAttribute(a.name);
-            }
-        });
-    }
     const fixStyle = d.createElement('style');
-    fixStyle.textContent =
-        '.animate-on-scroll { opacity: 1 !important; transform: none !important; }' +
-        '.fade-in, .fade-in-up, .fade-in-down { opacity: 1 !important; transform: none !important; }' +
-        '[data-aos], [data-scroll], [data-scroll-reveal] { opacity: 1 !important; transform: none !important; }' +
-        '.hidden-on-load, .invisible { opacity: 1 !important; visibility: visible !important; }';
+    fixStyle.textContent = `
+        .animate-on-scroll { opacity: 1 !important; transform: none !important; }
+        .fade-in, .fade-in-up, .fade-in-down { opacity: 1 !important; transform: none !important; }
+        [data-aos], [data-scroll], [data-scroll-reveal] { opacity: 1 !important; transform: none !important; }
+        .hidden-on-load, .invisible { opacity: 1 !important; visibility: visible !important; }
+    `;
     d.head.appendChild(fixStyle);
     const base = d.createElement('base');
     base.setAttribute('href', pageUrl().href);
     d.head.insertBefore(base, d.head.firstChild);
     return '<!DOCTYPE html>\n' + d.documentElement.outerHTML;
 }
-
 async function loadSite(skipVerify = false) {
     viewModeUrl = null;
     updatePageIndicator();
@@ -698,7 +614,6 @@ async function loadSite(skipVerify = false) {
         }, 1000);
     }
 }
-
 function reloadPreview() {
     if (Object.keys(pending).length) {
         if (!confirm('Несохранённые правки в превью пропадут. Обновить?')) return;
@@ -707,7 +622,6 @@ function reloadPreview() {
     loadSite();
     showStatus('Обновляем превью...', 'info');
 }
-
 function isInternalPage(href) {
     if (href === undefined || href === null) return false;
     if (href.trim().startsWith('#')) return false;
@@ -731,7 +645,6 @@ function isInternalPage(href) {
         return /\.html?$/i.test(url.pathname);
     } catch { return false; }
 }
-
 function normalizePagePath(href) {
     if (href === '' || href === '/' || href === './') return 'index.html';
     let p = href.split(/[?#]/)[0];
@@ -769,7 +682,6 @@ function normalizePagePath(href) {
     if (p.split('/').some(s => s === '..')) return '';
     return p;
 }
-
 async function prepareCurrentFile(logContainer = null) {
     const btn = $('prepareBtn');
     if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Подготовка...'; }
@@ -792,20 +704,20 @@ async function prepareCurrentFile(logContainer = null) {
         li('Загрузка ' + fileBeingPrepared + ' из репозитория...', 'working');
         const f = await getFile(fileBeingPrepared);
         if (!f.text.trim()) throw new Error(fileBeingPrepared + ' пуст или не прочитан');
-        li(fileBeingPrepared + ' загружен (' + (f.text.length / 1024).toFixed(1) + ' КБ)', 'done');
+        li(`${fileBeingPrepared} загружен (${(f.text.length / 1024).toFixed(1)} КБ)`, 'done');
         if (f.text.includes('data-edit="') || f.text.includes('data-img=')) {
             li('Обнаружены старые метки — очищаем...', 'working');
             const cleaned = cleanHtmlMarks(f.text);
             f.text = cleaned.html;
-            li('Удалено: ' + cleaned.removedEdit + ' text-меток и ' + cleaned.removedImg + ' img-меток', 'done');
+            li(`Удалено: ${cleaned.removedEdit} text-меток и ${cleaned.removedImg} img-меток`, 'done');
         }
         li('Анализ контента и расстановка меток...', 'working');
         const r = processHtml(f.text);
-        li('Найдено ' + r.textCount + ' текстов и ' + r.imgCount + ' картинок', 'done');
+        li(`Найдено ${r.textCount} текстов и ${r.imgCount} картинок`, 'done');
         li('Сохранение подготовленного ' + fileBeingPrepared + '...', 'working');
         const deployId = newDeployId();
         const stamped = stampDeployId(r.html, deployId);
-        await putFile(fileBeingPrepared, b64e(stamped), f.sha, 'Подготовка ' + fileBeingPrepared + ' к редактированию');
+        await putFile(fileBeingPrepared, b64e(stamped), f.sha, `Подготовка ${fileBeingPrepared} к редактированию`);
         repoDeployId = deployId;
         li(fileBeingPrepared + ' обновлён в репозитории', 'done');
         li('Подготовка завершена!', 'done');
@@ -814,13 +726,12 @@ async function prepareCurrentFile(logContainer = null) {
         li('Ошибка: ' + e.message, 'error');
         const i = interpretError(e.status, e.body);
         showErrorDetails(i.title, e.status || 'ошибка', e.body || e.message, i.fix);
-        showStatus('✗ ' + i.title, 'error');
+        showStatus(`✗ ${i.title}`, 'error');
         return false;
     } finally {
         if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fas fa-download"></i> Подготовить страницу'; }
     }
 }
-
 async function prepareSite() {
     const log = $('progressLog');
     log.style.display = 'block'; log.innerHTML = '';
@@ -828,7 +739,6 @@ async function prepareSite() {
     const ok = await prepareCurrentFile(log);
     if (ok) setTimeout(() => { showStatus('Страница подготовлена! Открываем редактор...'); setTimeout(showEditor, 500); }, 300);
 }
-
 async function navigateTo(href) {
     const cleanPath = normalizePagePath(href);
     if (!cleanPath) { showStatus('Не удалось определить страницу по ссылке: ' + href, 'error'); return; }
@@ -885,7 +795,6 @@ async function navigateTo(href) {
         showEditor();
     }
 }
-
 function openExternalInIframe(url) {
     viewModeUrl = url;
     updatePageIndicator();
@@ -898,14 +807,11 @@ function openExternalInIframe(url) {
     ifr.src = url;
     showStatus('Режим просмотра: редактирование недоступно. Нажмите «Домой» для возврата.', 'info');
 }
-
 function goHome() {
     if (currentFile === 'index.html' && !viewModeUrl) { reloadPreview(); return; }
     navigateTo('index.html');
 }
-
 function openLiveSite() { window.open(viewModeUrl ? viewModeUrl : pageUrl().href, '_blank', 'noopener'); }
-
 function hookIframe() {
     let d;
     try { d = $('siteIframe').contentDocument; } catch { d = null; }
@@ -914,9 +820,8 @@ function hookIframe() {
         return;
     }
     const st = d.createElement('style');
-    st.textContent = '[data-edit]:hover, [data-img]:hover { outline: 2px dashed #F40009; outline-offset: 2px; cursor: pointer; }';
+    st.textContent = `[data-edit]:hover, [data-img]:hover { outline: 2px dashed #F40009; outline-offset: 2px; cursor: pointer; }`;
     d.head.appendChild(st);
-
     function hideLoadedPlaceholders() {
         d.querySelectorAll('.placeholder-label').forEach(ph => {
             const holder = ph.parentElement;
@@ -932,7 +837,6 @@ function hookIframe() {
         });
     }
     hideLoadedPlaceholders();
-
     const handleModifierOpen = ev => {
         const linkEl = ev.target.closest && ev.target.closest('a[href]');
         if (!linkEl) return false;
@@ -940,9 +844,7 @@ function hookIframe() {
         openSafe((linkEl.getAttribute('href') || '').trim());
         return true;
     };
-
     d.addEventListener('auxclick', ev => { if (ev.button === 1) handleModifierOpen(ev); }, true);
-
     d.addEventListener('click', ev => {
         if (ev.altKey) {
             const linkEl = ev.target.closest && ev.target.closest('a[href]');
@@ -954,7 +856,7 @@ function hookIframe() {
                 if (/^(tel:|mailto:)/i.test(href)) { openSafe(href); return; }
                 if (href.startsWith('#')) {
                     const id = href.slice(1);
-                    const target = id ? (d.getElementById(id) || d.querySelector('[name="' + CSS.escape(id) + '"]')) : null;
+                    const target = id ? (d.getElementById(id) || d.querySelector(`[name="${CSS.escape(id)}"]`)) : null;
                     if (target) target.scrollIntoView({ behavior: 'smooth' });
                     return;
                 }
@@ -983,21 +885,20 @@ function hookIframe() {
         const linkEl = ev.target.closest && ev.target.closest('a[href]');
         if (linkEl) ev.preventDefault();
     }, true);
-
-    // Esc закрывает панели ДО скриптов сайта (capture-фаза)
+    // ИСПРАВЛЕНО: режим перехвата (третий параметр = true)
+    // Событие обрабатывается ДО скриптов сайта, которые могут его перехватить
     d.addEventListener('keydown', ev => {
         if (ev.key !== 'Escape') return;
         if ($('calcPanel').classList.contains('active')) { closeCalcPanel(); return; }
         if ($('editPanel').classList.contains('active')) { closePanel(); }
     }, true);
 }
-
+// ИСПРАВЛЕНО: глобальный обработчик закрывает и панель калькулятора тоже
 document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
     if ($('calcPanel').classList.contains('active')) { closeCalcPanel(); return; }
     if ($('editPanel').classList.contains('active')) { closePanel(); }
 });
-
 function syncHref(el, newValue) {
     const link = el.closest('a[href]');
     if (!link || link.hasAttribute('data-cms-link')) return;
@@ -1028,24 +929,22 @@ function syncHref(el, newValue) {
         if (/^[a-zA-Z0-9_.]+$/.test(u)) link.setAttribute('href', 'https://instagram.com/' + u);
     }
 }
-
 function findImgTargets(doc, key, path) {
     if (!doc) return [];
     if (key && /^img_\d+$/.test(key)) {
-        const el = doc.querySelector('[data-img-id="' + CSS.escape(key) + '"]');
+        const el = doc.querySelector(`[data-img-id="${CSS.escape(key)}"]`);
         return el ? [el] : [];
     }
     const lookupPath = path || key;
     if (!lookupPath) return [];
-    return Array.from(doc.querySelectorAll('[data-img="' + CSS.escape(lookupPath) + '"]'));
+    return Array.from(doc.querySelectorAll(`[data-img="${CSS.escape(lookupPath)}"]`));
 }
-
 function readTextLink(key) {
     const dflt = { url: '', linkColor: 'inherit', linkTarget: '_blank' };
     let d = null;
     try { d = $('siteIframe').contentDocument; } catch {}
     if (!d) return dflt;
-    const el = d.querySelector('[data-edit="' + CSS.escape(key) + '"]');
+    const el = d.querySelector(`[data-edit="${CSS.escape(key)}"]`);
     if (!el) return dflt;
     const link = el.closest('a[data-cms-link]');
     if (!link) return dflt;
@@ -1057,7 +956,6 @@ function readTextLink(key) {
         linkTarget: target === '_self' ? '_self' : '_blank'
     };
 }
-
 function readImageLink(key, path) {
     let d = null;
     try { d = $('siteIframe').contentDocument; } catch {}
@@ -1076,7 +974,6 @@ function readImageLink(key, path) {
     const targetAttr = linkEl.getAttribute('target') || '_blank';
     return { url: href, linkTarget: targetAttr === '_self' ? '_self' : '_blank' };
 }
-
 function applyLinkToText(doc, el, url, keepColor, linkColor, linkTarget) {
     if (!el) return;
     let link = el.closest ? el.closest('a') : null;
@@ -1115,7 +1012,6 @@ function applyLinkToText(doc, el, url, keepColor, linkColor, linkTarget) {
         }
     }
 }
-
 function applyLinkToImage(doc, target, url, linkTarget = '_blank') {
     if (!target) return;
     const isA = target.tagName === 'A';
@@ -1151,7 +1047,6 @@ function applyLinkToImage(doc, target, url, linkTarget = '_blank') {
     if (linkTarget === '_blank') link.setAttribute('rel', 'noopener');
     else link.removeAttribute('rel');
 }
-
 function cleanHtmlMarks(html) {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     const beforeEdit = doc.querySelectorAll('[data-edit]').length;
@@ -1172,7 +1067,6 @@ function cleanHtmlMarks(html) {
     doc.body.normalize();
     return { html: '<!DOCTYPE html>\n' + doc.documentElement.outerHTML, removedEdit: beforeEdit, removedImg: beforeImg };
 }
-
 function processHtml(html) {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     let textCounter = 0;
@@ -1187,7 +1081,6 @@ function processHtml(html) {
     const extra = (CMS_CONFIG.extraEditableSelectors || []).concat('[data-editable]').join(', ');
     const forced = new Set();
     try { doc.querySelectorAll(extra).forEach(el => forced.add(el)); } catch {}
-
     const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, {
         acceptNode(node) {
             const parent = node.parentElement;
@@ -1207,13 +1100,12 @@ function processHtml(html) {
     let textCount = 0;
     nodesToProcess.forEach(textNode => {
         const span = doc.createElement('span');
-        span.setAttribute('data-edit', 'auto_' + (++textCounter));
+        span.setAttribute('data-edit', `auto_${++textCounter}`);
         span.textContent = textNode.textContent;
         textNode.parentElement.replaceChild(span, textNode);
         textCount++;
     });
     doc.querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('data-editable'));
-
     const CORE_IMAGE_WRAPPERS = [
         '.img-wrapper', '.gallery-item', '.team-photo',
         '.about-img-wrapper', '.hero-img-wrapper', '.product-image',
@@ -1238,7 +1130,6 @@ function processHtml(html) {
     });
     return { html: '<!DOCTYPE html>\n' + doc.documentElement.outerHTML, textCount, imgCount };
 }
-
 async function cleanMarks() {
     if (Object.keys(pending).length > 0) {
         if (!confirm('У вас есть несохранённые правки. Они будут потеряны при очистке. Продолжить?')) return;
@@ -1260,63 +1151,61 @@ async function cleanMarks() {
         const deployId = newDeployId();
         const stamped = stampDeployId(result.html, deployId);
         showStatus('Сохраняю очищенный файл...', 'info');
-        await putFile(currentFile, b64e(stamped), f.sha, 'Очистка меток редактирования в ' + currentFile);
+        await putFile(currentFile, b64e(stamped), f.sha, `Очистка меток редактирования в ${currentFile}`);
         repoDeployId = deployId;
-        showStatus('✓ Очищено: ' + result.removedEdit + ' text-меток и ' + result.removedImg + ' img-меток.', 'success');
+        showStatus(`✓ Очищено: ${result.removedEdit} text-меток и ${result.removedImg} img-меток.`, 'success');
         setTimeout(() => { showSetup(); $('setupTitle').textContent = 'Страница очищена — готова к подготовке'; }, 1500);
     } catch (e) {
         const i = interpretError(e.status, e.body);
-        showStatus('✗ Ошибка: ' + i.title, 'error');
+        showStatus(`✗ Ошибка: ${i.title}`, 'error');
     } finally {
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-broom"></i> Очистить метки';
     }
 }
-
 function openPanel(title, key) {
     lastFocus = document.activeElement;
     $('editTitle').textContent = title;
     $('editKey').textContent = key;
     $('editPanel').classList.add('active');
 }
-
 function openText(key, value) {
     editKind = 'text'; editKey = key;
     openPanel('Редактирование текста', key);
     const linkData = readTextLink(key);
     editOrigText = linkData;
-    $('editPanelContent').innerHTML =
-        '<textarea id="editTextArea" aria-label="Текст"></textarea>' +
-        '<div class="link-section">' +
-            '<label class="field-label" for="editLink"><i class="fas fa-link" style="color:#F40009;"></i> Ссылка при клике на текст (необязательно)</label>' +
-            '<input type="url" id="editLink" placeholder="https://..." autocomplete="off">' +
-            '<div class="link-hint">Оставьте поле пустым, чтобы убрать ссылку с текста.</div>' +
-        '</div>' +
-        '<div class="link-option">' +
-            '<span class="field-label"><i class="fas fa-palette" style="color:#CD853F;"></i> Цвет ссылки</span>' +
-            '<div class="option-group">' +
-                '<label class="radio-label"><input type="radio" name="linkColor" value="inherit"><span class="color-preview inherit">Текущий</span></label>' +
-                '<label class="radio-label"><input type="radio" name="linkColor" value="brown"><span class="color-preview brown">Коричневый</span></label>' +
-                '<label class="radio-label"><input type="radio" name="linkColor" value="lightbrown"><span class="color-preview lightbrown">Светло-коричневый</span></label>' +
-            '</div>' +
-        '</div>' +
-        '<div class="link-option">' +
-            '<span class="field-label"><i class="fas fa-external-link-alt" style="color:#c9a961;"></i> Открывать ссылку</span>' +
-            '<div class="option-group">' +
-                '<label class="radio-label"><input type="radio" name="linkTarget" value="_blank"><span class="target-label">В новой вкладке</span></label>' +
-                '<label class="radio-label"><input type="radio" name="linkTarget" value="_self"><span class="target-label">В том же окне</span></label>' +
-            '</div>' +
-        '</div>';
+    $('editPanelContent').innerHTML = `
+        <textarea id="editTextArea" aria-label="Текст"></textarea>
+        <div class="link-section">
+            <label class="field-label" for="editLink"><i class="fas fa-link" style="color:#F40009;"></i> Ссылка при клике на текст (необязательно)</label>
+            <input type="url" id="editLink" placeholder="https://..." autocomplete="off">
+            <div class="link-hint">Оставьте поле пустым, чтобы убрать ссылку с текста.</div>
+        </div>
+        <div class="link-option">
+            <span class="field-label"><i class="fas fa-palette" style="color:#CD853F;"></i> Цвет ссылки</span>
+            <div class="option-group">
+                <label class="radio-label"><input type="radio" name="linkColor" value="inherit"><span class="color-preview inherit">Текущий</span></label>
+                <label class="radio-label"><input type="radio" name="linkColor" value="brown"><span class="color-preview brown">Коричневый</span></label>
+                <label class="radio-label"><input type="radio" name="linkColor" value="lightbrown"><span class="color-preview lightbrown">Светло-коричневый</span></label>
+            </div>
+        </div>
+        <div class="link-option">
+            <span class="field-label"><i class="fas fa-external-link-alt" style="color:#c9a961;"></i> Открывать ссылку</span>
+            <div class="option-group">
+                <label class="radio-label"><input type="radio" name="linkTarget" value="_blank"><span class="target-label">В новой вкладке</span></label>
+                <label class="radio-label"><input type="radio" name="linkTarget" value="_self"><span class="target-label">В том же окне</span></label>
+            </div>
+        </div>
+    `;
     const ta = $('editTextArea');
     ta.value = pending['t:' + key] ? pending['t:' + key].value : value.trim();
     $('editLink').value = linkData.url;
-    const colorRadio = document.querySelector('input[name="linkColor"][value="' + linkData.linkColor + '"]') || document.querySelector('input[name="linkColor"][value="inherit"]');
+    const colorRadio = document.querySelector(`input[name="linkColor"][value="${linkData.linkColor}"]`) || document.querySelector('input[name="linkColor"][value="inherit"]');
     if (colorRadio) colorRadio.checked = true;
-    const targetRadio = document.querySelector('input[name="linkTarget"][value="' + linkData.linkTarget + '"]') || document.querySelector('input[name="linkTarget"][value="_blank"]');
+    const targetRadio = document.querySelector(`input[name="linkTarget"][value="${linkData.linkTarget}"]`) || document.querySelector('input[name="linkTarget"][value="_blank"]');
     if (targetRadio) targetRadio.checked = true;
     setTimeout(() => ta.focus(), 100);
 }
-
 function openImage(path, src, imgId) {
     editKind = 'image';
     editKey = imgId || path;
@@ -1325,79 +1214,69 @@ function openImage(path, src, imgId) {
     openPanel('Замена изображения', path);
     const imgLinkData = readImageLink(editKey, path);
     editOrigImg = imgLinkData;
-
     const currentExt = (path.split('.').pop() || '').toLowerCase();
-    const extDisplay = currentExt ? '<code style="background:#2a2a2a;padding:2px 6px;border-radius:3px;font-size:11px;">.' + esc(currentExt) + '</code>' : '';
-
-    $('editPanelContent').innerHTML =
-        '<div style="margin-bottom: 16px;">' +
-            '<div style="color: #888; font-size: 13px; margin-bottom: 8px;">Текущее фото ' + extDisplay + ':</div>' +
-            '<img id="curImg" alt="" style="max-width: 100%; max-height: 180px; border-radius: 8px;">' +
-        '</div>' +
-        '<label class="file-upload">' +
-            '<i class="fas fa-cloud-upload-alt"></i>' +
-            '<div class="upload-text"><strong>Выберите новое изображение</strong><br><small>Поддерживаются: JPG, PNG, WebP, GIF, SVG. Максимум 2 МБ. Файл заменит <code style="background:#2a2a2a;padding:1px 5px;border-radius:3px;">' + esc(path) + '</code>.</small></div>' +
-            '<input type="file" id="imageFileInput" accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml">' +
-        '</label>' +
-        '<div id="imagePreview" style="margin-top: 12px;"></div>' +
-        '<div class="link-section">' +
-            '<label class="field-label" for="imgLink"><i class="fas fa-link" style="color:#F40009;"></i> Ссылка при клике на фото (необязательно)</label>' +
-            '<input type="url" id="imgLink" placeholder="https://..." autocomplete="off">' +
-            '<div class="link-hint">Куда переходить при клике по картинке. Оставьте пустым, чтобы убрать ссылку.</div>' +
-        '</div>' +
-        '<div class="link-option">' +
-            '<span class="field-label"><i class="fas fa-external-link-alt" style="color:#c9a961;"></i> Открывать ссылку</span>' +
-            '<div class="option-group">' +
-                '<label class="radio-label"><input type="radio" name="imgLinkTarget" value="_blank"><span class="target-label">В новой вкладке</span></label>' +
-                '<label class="radio-label"><input type="radio" name="imgLinkTarget" value="_self"><span class="target-label">В том же окне</span></label>' +
-            '</div>' +
-        '</div>';
+    const extDisplay = currentExt ? `<code style="background:#2a2a2a;padding:2px 6px;border-radius:3px;font-size:11px;">.${esc(currentExt)}</code>` : '';
+    $('editPanelContent').innerHTML = `
+        <div style="margin-bottom: 16px;">
+            <div style="color: #888; font-size: 13px; margin-bottom: 8px;">Текущее фото ${extDisplay}:</div>
+            <img id="curImg" alt="" style="max-width: 100%; max-height: 180px; border-radius: 8px;">
+        </div>
+        <label class="file-upload">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <div class="upload-text"><strong>Выберите новое изображение</strong><br><small>Поддерживаются: JPG, PNG, WebP, GIF, SVG. Максимум 2 МБ. Файл заменит <code style="background:#2a2a2a;padding:1px 5px;border-radius:3px;">${esc(path)}</code>.</small></div>
+            <input type="file" id="imageFileInput" accept="image/*">
+        </label>
+        <div id="imagePreview" style="margin-top: 12px;"></div>
+        <div class="link-section">
+            <label class="field-label" for="imgLink"><i class="fas fa-link" style="color:#F40009;"></i> Ссылка при клике на фото (необязательно)</label>
+            <input type="url" id="imgLink" placeholder="https://..." autocomplete="off">
+            <div class="link-hint">Куда переходить при клике по картинке. Оставьте пустым, чтобы убрать ссылку.</div>
+        </div>
+        <div class="link-option">
+            <span class="field-label"><i class="fas fa-external-link-alt" style="color:#c9a961;"></i> Открывать ссылку</span>
+            <div class="option-group">
+                <label class="radio-label"><input type="radio" name="imgLinkTarget" value="_blank"><span class="target-label">В новой вкладке</span></label>
+                <label class="radio-label"><input type="radio" name="imgLinkTarget" value="_self"><span class="target-label">В том же окне</span></label>
+            </div>
+        </div>
+    `;
     if (src) $('curImg').src = src;
     $('imgLink').value = imgLinkData.url;
-    const r = document.querySelector('input[name="imgLinkTarget"][value="' + imgLinkData.linkTarget + '"]') || document.querySelector('input[name="imgLinkTarget"][value="_blank"]');
+    const r = document.querySelector(`input[name="imgLinkTarget"][value="${imgLinkData.linkTarget}"]`) || document.querySelector('input[name="imgLinkTarget"][value="_blank"]');
     if (r) r.checked = true;
-
     const IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif', 'image/svg+xml', 'image/bmp', 'image/x-icon'];
-
     $('imageFileInput').addEventListener('change', e => {
         const file = e.target.files[0];
         if (!file) return;
-
         if (!IMAGE_TYPES.includes(file.type) && !file.type.startsWith('image/')) {
             e.target.value = '';
             return showStatus('Файл должен быть изображением (JPG, PNG, WebP, GIF, SVG)', 'error');
         }
-
         if (file.size > 2 * 1024 * 1024) {
             e.target.value = '';
             return showStatus('Файл слишком большой (максимум 2 МБ)', 'error');
         }
-
         const fileExt = (file.name.split('.').pop() || '').toLowerCase();
         const ALLOWED_EXTS = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg', 'bmp', 'ico'];
         if (!ALLOWED_EXTS.includes(fileExt)) {
             e.target.value = '';
             return showStatus('Неподдерживаемое расширение файла: .' + fileExt, 'error');
         }
-
         if ((currentExt === 'svg') !== (fileExt === 'svg')) {
             e.target.value = '';
             return showStatus('SVG заменяется только на SVG, растровое фото — только на растровое (JPG/PNG/WebP)', 'error');
         }
-
         const rd = new FileReader();
         rd.onload = ev => {
             pendingImg = ev.target.result;
-            $('imagePreview').innerHTML = '<div style="color: #00cc66; font-size: 13px;"><i class="fas fa-check-circle"></i> Файл: <strong>' + esc(file.name) + '</strong> (' + (file.size / 1024).toFixed(0) + ' КБ) — готов к загрузке</div>';
+            $('imagePreview').innerHTML = `<div style="color: #00cc66; font-size: 13px;"><i class="fas fa-check-circle"></i> Файл: <strong>${esc(file.name)}</strong> (${(file.size / 1024).toFixed(0)} КБ) — готов к загрузке</div>`;
         };
         rd.readAsDataURL(file);
     });
 }
-
 function applyEdit() {
     let d = null;
     try { d = $('siteIframe').contentDocument; } catch {}
-
     if (editKind === 'text') {
         const v = $('editTextArea').value;
         const linkUrl = $('editLink').value.trim();
@@ -1415,7 +1294,7 @@ function applyEdit() {
             type: 'text', value: v, link: linkUrl, keepColor, linkColor, linkTarget, linkChanged
         };
         if (d) {
-            const el = d.querySelector('[data-edit="' + CSS.escape(editKey) + '"]');
+            const el = d.querySelector(`[data-edit="${CSS.escape(editKey)}"]`);
             if (el) {
                 el.textContent = keepWs(el.textContent, v);
                 if (linkChanged) applyLinkToText(d, el, linkUrl, keepColor, linkColor, linkTarget);
@@ -1458,14 +1337,12 @@ function applyEdit() {
     markUnsaved();
     closePanel();
 }
-
 function closePanel() {
     $('editPanel').classList.remove('active');
     editKind = editKey = editImagePath = pendingImg = editOrigText = editOrigImg = null;
     if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch {} }
     lastFocus = null;
 }
-
 async function saveAll() {
     const keys = Object.keys(pending);
     if (!keys.length) return showStatus('Нет изменений для сохранения', 'info');
@@ -1478,49 +1355,42 @@ async function saveAll() {
         const images = keys.filter(k => pending[k].type === 'image');
         const imagesWithData = images.filter(k => pending[k].data);
         const imagesWithLinks = images.filter(k => pending[k].linkChanged);
-
         if (texts.length || imagesWithLinks.length) {
             const f = await getFile(currentFile);
             const doc = new DOMParser().parseFromString(f.text, 'text/html');
-
             for (const k of texts) {
                 const p = pending[k];
-                const el = doc.querySelector('[data-edit="' + CSS.escape(k.slice(2)) + '"]');
+                const el = doc.querySelector(`[data-edit="${CSS.escape(k.slice(2))}"]`);
                 if (!el) { failed.push(k); continue; }
                 el.textContent = keepWs(el.textContent, p.value);
                 if (p.linkChanged) applyLinkToText(doc, el, p.link || '', p.keepColor || false, p.linkColor || 'inherit', p.linkTarget || '_blank');
                 if (!p.link) syncHref(el, p.value);
                 done.push(k);
             }
-
             for (const k of imagesWithLinks) {
                 const { path, link, key, linkTarget } = pending[k];
                 const targets = findImgTargets(doc, key || k.slice(2), path);
                 if (targets.length) targets.forEach(t => applyLinkToImage(doc, t, link, linkTarget || '_blank'));
                 else failed.push(k);
             }
-
             const deployId = newDeployId();
             const stamped = stampDeployId('<!DOCTYPE html>\n' + doc.documentElement.outerHTML, deployId);
-            await putFile(currentFile, b64e(stamped), f.sha, 'Редактирование текстов и ссылок в ' + currentFile);
+            await putFile(currentFile, b64e(stamped), f.sha, `Редактирование текстов и ссылок в ${currentFile}`);
             repoDeployId = deployId;
         }
-
         for (const k of imagesWithData) {
             const { path, data } = pending[k];
             try {
-                await putFile(path, data.split(',')[1], await getSha(path), 'Обновление изображения ' + path);
+                await putFile(path, data.split(',')[1], await getSha(path), `Обновление изображения ${path}`);
                 if (!done.includes(k)) done.push(k);
             } catch (e) { if (!failed.includes(k)) failed.push(k); }
         }
-
         imagesWithLinks.forEach(k => { if (!done.includes(k) && !failed.includes(k)) done.push(k); });
-
         done.filter(k => !failed.includes(k)).forEach(k => delete pending[k]);
         markUnsaved();
         if (failed.length) {
             const successCount = done.filter(k => !failed.includes(k)).length;
-            showStatus('Сохранено: ' + successCount + '. Не сохранено: ' + failed.length + '.', 'error');
+            showStatus(`Сохранено: ${successCount}. Не сохранено: ${failed.length}.`, 'error');
         } else {
             showStatus('Сохранено! Ждём деплой GitHub Pages...', 'success');
             setDeployBadge('pending', '<i class="fas fa-spinner fa-spin"></i> Деплой...');
@@ -1528,13 +1398,12 @@ async function saveAll() {
         }
     } catch (e) {
         const i = interpretError(e.status, e.body);
-        showStatus('✗ ' + i.title + '. ' + i.fix, 'error');
+        showStatus(`✗ ${i.title}. ${i.fix}`, 'error');
     } finally {
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Сохранить в GitHub';
     }
 }
-
 async function resetSite() {
     if (Object.keys(pending).length && !confirm('Есть несохранённые правки, они будут потеряны. Продолжить?')) return;
     if (!confirm('Переподготовить страницу ' + currentFile + '? Метки будут обновлены.')) return;
@@ -1544,21 +1413,18 @@ async function resetSite() {
     $('progressLog').style.display = 'none';
     $('errorDetails').innerHTML = '';
 }
-
 /* ═══════════════════════════════════════════════════════ */
 /* ПАНЕЛЬ НАСТРОЕК КАЛЬКУЛЯТОРА                           */
 /* ═══════════════════════════════════════════════════════ */
 let calcConfigData = null;
 let calcConfigSha = null;
 const CALC_CONFIG_PATH = 'calc-config.js';
-
 function parseCalcConfig(text) {
     try {
         const fn = new Function(text + '; return typeof CALC_CONFIG !== "undefined" ? CALC_CONFIG : null;');
         return fn();
     } catch (e) { return null; }
 }
-
 function serializeCalcConfig(config) {
     return '// ═══════════════════════════════════════════════════════\n' +
            '// НАСТРОЙКИ КАЛЬКУЛЯТОРА РЕМОНТА\n' +
@@ -1567,7 +1433,6 @@ function serializeCalcConfig(config) {
            '// ═══════════════════════════════════════════════════════\n\n' +
            'const CALC_CONFIG = ' + JSON.stringify(config, null, 4) + ';\n';
 }
-
 async function loadCalcConfig() {
     try {
         const f = await getFile(CALC_CONFIG_PATH);
@@ -1583,56 +1448,48 @@ async function loadCalcConfig() {
         }
     }
 }
-
 function renderCalcPanel() {
     const c = calcConfigData;
     let html = '';
-
     html += '<div class="calc-section"><h3>🔨 Типы ремонта (цена за м²)</h3>';
     c.types.forEach((t, i) => {
-        html += '<div class="calc-field-row">' +
-            '<label>' + esc(t.icon || '') + ' ' + esc(t.name) + '</label>' +
-            '<input type="number" data-section="types" data-index="' + i + '" data-field="price" value="' + esc(t.price) + '">' +
-        '</div>';
+        html += `<div class="calc-field-row">
+            <label>${esc(t.icon || '')} ${esc(t.name)}</label>
+            <input type="number" data-section="types" data-index="${i}" data-field="price" value="${t.price}">
+        </div>`;
     });
     html += '</div>';
-
     html += '<div class="calc-section"><h3>🧱 Материалы (% к базовой стоимости)</h3>';
     c.materials.forEach((m, i) => {
-        html += '<div class="calc-field-row">' +
-            '<label>' + esc(m.name) + '</label>' +
-            '<input type="number" data-section="materials" data-index="' + i + '" data-field="percent" value="' + esc(m.percent) + '">' +
-        '</div>';
+        html += `<div class="calc-field-row">
+            <label>${esc(m.name)}</label>
+            <input type="number" data-section="materials" data-index="${i}" data-field="percent" value="${m.percent}">
+        </div>`;
     });
     html += '</div>';
-
     html += '<div class="calc-section"><h3>⚙️ Дополнительные работы (фиксированная цена)</h3>';
     c.works.forEach((w, i) => {
-        html += '<div class="calc-field-row">' +
-            '<label>' + esc(w.name) + '</label>' +
-            '<input type="number" data-section="works" data-index="' + i + '" data-field="price" value="' + esc(w.price) + '">' +
-        '</div>';
+        html += `<div class="calc-field-row">
+            <label>${esc(w.name)}</label>
+            <input type="number" data-section="works" data-index="${i}" data-field="price" value="${w.price}">
+        </div>`;
     });
     html += '</div>';
-
     html += '<div class="calc-section"><h3>🎁 Скидка</h3>';
-    html += '<div class="calc-field-row"><label>Порог срабатывания (₽)</label>' +
-        '<input type="number" data-section="discount" data-field="threshold" value="' + esc(c.discount.threshold) + '"></div>';
-    html += '<div class="calc-field-row"><label>Размер скидки (%)</label>' +
-        '<input type="number" data-section="discount" data-field="percent" value="' + esc(c.discount.percent) + '"></div>';
+    html += `<div class="calc-field-row"><label>Порог срабатывания (₽)</label>
+        <input type="number" data-section="discount" data-field="threshold" value="${c.discount.threshold}"></div>`;
+    html += `<div class="calc-field-row"><label>Размер скидки (%)</label>
+        <input type="number" data-section="discount" data-field="percent" value="${c.discount.percent}"></div>`;
     html += '</div>';
-
     html += '<div class="calc-section"><h3>📐 Диапазон площади (м²)</h3>';
-    html += '<div class="calc-field-row"><label>Минимум</label>' +
-        '<input type="number" data-section="area" data-field="min" value="' + esc(c.area.min) + '"></div>';
-    html += '<div class="calc-field-row"><label>Максимум</label>' +
-        '<input type="number" data-section="area" data-field="max" value="' + esc(c.area.max) + '"></div>';
-    html += '<div class="calc-field-row"><label>По умолчанию</label>' +
-        '<input type="number" data-section="area" data-field="default" value="' + esc(c.area.default) + '"></div>';
+    html += `<div class="calc-field-row"><label>Минимум</label>
+        <input type="number" data-section="area" data-field="min" value="${c.area.min}"></div>`;
+    html += `<div class="calc-field-row"><label>Максимум</label>
+        <input type="number" data-section="area" data-field="max" value="${c.area.max}"></div>`;
+    html += `<div class="calc-field-row"><label>По умолчанию</label>
+        <input type="number" data-section="area" data-field="default" value="${c.area.default}"></div>`;
     html += '</div>';
-
     $('calcPanelBody').innerHTML = html;
-
     $('calcPanelBody').querySelectorAll('input').forEach(inp => {
         inp.addEventListener('input', e => {
             const { section, index, field } = e.target.dataset;
@@ -1645,7 +1502,6 @@ function renderCalcPanel() {
         });
     });
 }
-
 async function saveCalcConfig() {
     const btn = $('calcPanelSave');
     btn.disabled = true;
@@ -1663,22 +1519,18 @@ async function saveCalcConfig() {
         btn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Сохранить в GitHub';
     }
 }
-
 function openCalcPanel() {
     $('calcPanel').classList.add('active');
     $('calcPanelBody').innerHTML = '<div class="calc-panel-loading">Загрузка настроек из репозитория...</div>';
     loadCalcConfig();
 }
-
 function closeCalcPanel() {
     $('calcPanel').classList.remove('active');
 }
-
 $('calcBtn').addEventListener('click', openCalcPanel);
 $('calcPanelClose').addEventListener('click', closeCalcPanel);
 $('calcPanelCancel').addEventListener('click', closeCalcPanel);
 $('calcPanelSave').addEventListener('click', saveCalcConfig);
-
 $('checkBtn').addEventListener('click', checkToken);
 $('checkBtn2').addEventListener('click', checkToken);
 $('reloadBtn').addEventListener('click', reloadPreview);
@@ -1693,7 +1545,6 @@ $('closePanelBtn').addEventListener('click', closePanel);
 $('homeBtn').addEventListener('click', goHome);
 $('openSiteBtn').addEventListener('click', openLiveSite);
 $('deployBadge').addEventListener('click', () => verifyDeploy(repoDeployId, true));
-
 window.addEventListener('beforeunload', e => { if (Object.keys(pending).length) { e.preventDefault(); e.returnValue = ''; } });
 </script>
 </body>
