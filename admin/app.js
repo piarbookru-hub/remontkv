@@ -36,7 +36,6 @@ let deployPollGen = 0;
 const API = `https://api.github.com/repos/${CMS_CONFIG.owner}/${CMS_CONFIG.repo}`;
 
 $('projectNameHeader').textContent = CMS_CONFIG.projectName || 'Редактор';
-$('repoNameHeader').textContent = `· ${CMS_CONFIG.owner}/${CMS_CONFIG.repo}`;
 
 function saveCurrentFile() { ls.set('cms_currentFile', currentFile); }
 
